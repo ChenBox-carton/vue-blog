@@ -1,14 +1,35 @@
 <template>
   <div class="container">
-    <div class="mainIcon">
-      <img src="/images/icon.jpg" alt="box-images" width="40px" height="40px">
+    <div class="navLeft">
+        <div class="mainIcon">
+            <img src="/images/icon.jpg" alt="box-images" width="40px" height="40px">
+        </div>
+        <ul class="nav">
+            <a href="#">AboutMe</a>
+            <a href="#">Projects</a>
+            <a href="#">Images</a>
+            <a href="#">Archives</a>
+        </ul>
     </div>
-    <ul class="nav">
-      <a href="#">About Me</a>
-      <a href="#">Projects</a>
-      <a href="#">Images</a>
-      <a href="#">Log in</a>
-    </ul>
+    <div class="navRight">
+        <div class="navSocial">
+            <button>
+                <img src="/images/home.jpg" alt="home-images" width="40px" height="40px">
+            </button>
+            <button>
+                <img src="/images/discord.jpg" alt="discord-images" width="40px" height="40px">
+            </button>
+            <button>
+                <img src="/images/github.jpg" alt="github-images" width="40px" height="40px">
+            </button>
+            <button>
+                <img src="/images/question.jpg" alt="question-images" width="40px" height="40px">
+            </button>
+        </div>
+        <div class="loginIcon">
+            <img src="/images/login.jpg" alt="login-images" width="35px" height="35px">
+        </div>
+    </div>
   </div>
 </template>
 
@@ -21,14 +42,14 @@
 
 .container {
     font-size: 24px;
-    font-family: "Agdasima";
+    font-family: "Agdasima", sans-serif;
     width: 100%;
-    height: 80px;
+    height: 100px;
     background: #252525;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px 40px 40px 20px;
+    padding: 20px;
 }
 
 .mainIcon {
@@ -37,41 +58,110 @@
     display: flex;
     border-radius: 50%;
     background-color: #fff;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     position: relative;
     overflow: hidden;
 }
 
-.mainIcon img {
-    margin: 0 auto;
+.mainIcon img,
+.loginIcon img, 
+.navSocial button img{
     z-index: 9999;
 }
 
-.nav{
+.nav { 
+    margin-left: 60px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 80px;
 }
 
-.nav a{
+.nav a {
     color: #fff;
     text-decoration: none; 
     position: relative;
-    padding: 5px 0;
+}
+
+.navSocial {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 100px;
+    background-color: #fff;
+    padding: 10px;
+    margin-right: 60px;
+    gap: 20px; 
+}
+
+.navSocial button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.loginIcon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25%;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.navLeft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navRight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /*RWD*/
-@media (max-width: 600px) {
+@media (max-width: 660px) {
   .nav {
-      justify-content: center;
-      gap: 40px;
+        margin-left: 40px;
+        gap: 30px;
   }
 }
 
-/*動畫*/
+
+@media(max-width: 1080px) {
+    .navRight {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+}
+
+@media(min-width: 1081px) {
+    .navRight {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+}
+
+/* ----------動畫---------- */
 
 /* 填充icon背景*/
-.mainIcon::after{
+.mainIcon::after, 
+.loginIcon::after{
     content: '';
     position: absolute;
     left: 0;
@@ -82,19 +172,22 @@
     transform: scaleY(0);
     transform-origin: bottom;
     transition: transform 0.8s ease;
-    z-index: 2;
+    z-index: 1;
 }
 
-.mainIcon:hover::after{
+.mainIcon:hover::after, 
+.loginIcon:hover::after{
     transform: scaleY(1);
 }
 
 /* icon放大 */
-.mainIcon img {
+.mainIcon img,
+.loginIcon img {
     transition: transform 0.4s ease;
 }   
 
-.mainIcon:hover img {
+.mainIcon:hover img,
+.loginIcon:hover img {
     transform: scale(1.2);
 }
 
@@ -110,7 +203,7 @@
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.4s ease;
-    z-index: 2;
+    z-index: 1;
 }
 
 .nav a:hover::after {
@@ -118,13 +211,43 @@
     transform-origin: left;
 }
 
-/* nav變色 */
+/* nav 變色 and 彈跳 */
 .nav a {
     transition: color 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0, -0.5, 0, 2);
 }
 
 .nav a:hover {
     color: #ffaf01;
+    transform: translateY(-3px);
+}
+
+/* novS 按鈕放大 */
+button img {
+    transition: transform 0.4s ease;
+}
+
+.navSocial button:hover img {
+    transform: scale(1.2);
+}
+
+/* novS陰影 */
+.navSocial button::before {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: #ffaf01;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    z-index: 1;
+}
+
+.navSocial button:hover::before {
+    opacity: 1;
+    transform: scale(1);
 }
 
 </style>
