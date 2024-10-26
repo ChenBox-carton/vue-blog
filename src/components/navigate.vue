@@ -5,10 +5,10 @@
             <img src="/images/icon.jpg" alt="box-images" width="40px" height="40px">
         </div>
         <ul class="nav">
-            <a href="#">AboutMe</a>
-            <a href="#">Projects</a>
-            <a href="#">Images</a>
-            <a href="#">Archives</a>
+            <li><a href="https://www.google.com/">AboutMe</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Images</a></li>
+            <li><a href="#">Archives</a></li>
         </ul>
     </div>
     <div class="navRight">
@@ -67,7 +67,7 @@
 .mainIcon img,
 .loginIcon img, 
 .navSocial button img{
-    z-index: 9999;
+    z-index: 3;
 }
 
 .nav { 
@@ -76,6 +76,16 @@
     justify-content: center;
     align-items: center;
     gap: 80px;
+}
+
+ul {
+    list-style-type: none;
+    z-index: 3;
+}
+
+.nav li {
+    position: relative;
+    display: inline-block;
 }
 
 .nav a {
@@ -140,9 +150,8 @@
   }
 }
 
-
 @media(max-width: 1080px) {
-    .navRight {
+    .navSocial, .loginIcon {
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.5s ease, visibility 0.5s ease;
@@ -150,7 +159,7 @@
 }
 
 @media(min-width: 1081px) {
-    .navRight {
+    .navSocial, .loginIcon {
         opacity: 1;
         visibility: visible;
         transition: opacity 0.5s ease, visibility 0.5s ease;
@@ -212,12 +221,11 @@
 }
 
 /* nav 變色 and 彈跳 */
-.nav a {
-    transition: color 0.4s ease;
-    transition: transform 0.4s cubic-bezier(0, -0.5, 0, 2);
+.nav a, .nav li {
+    transition: color 0.4s ease, transform 0.4s cubic-bezier(0, -0.5, 0, 2);
 }
 
-.nav a:hover {
+.nav a:hover, .nav li:hover {
     color: #ffaf01;
     transform: translateY(-3px);
 }
@@ -231,7 +239,7 @@ button img {
     transform: scale(1.2);
 }
 
-/* novS陰影 */
+/* novS */
 .navSocial button::before {
     content: "";
     position: absolute;
