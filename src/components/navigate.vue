@@ -5,7 +5,7 @@
             <img src="/images/icon.jpg" alt="box-images" width="40px" height="40px">
         </div>
         <ul class="nav">
-            <li><a href="https://www.google.com/">AboutMe</a></li>
+            <li><a href="#">AboutMe</a></li>
             <li><a href="#">Projects</a></li>
             <li><a href="#">Images</a></li>
             <li><a href="#">Archives</a></li>
@@ -81,11 +81,6 @@
 ul {
     list-style-type: none;
     z-index: 3;
-}
-
-.nav li {
-    position: relative;
-    display: inline-block;
 }
 
 .nav a {
@@ -221,13 +216,20 @@ ul {
 }
 
 /* nav 變色 and 彈跳 */
-.nav a, .nav li {
-    transition: color 0.4s ease, transform 0.4s cubic-bezier(0, -0.5, 0, 2);
+.nav a{
+    transition: color 0.4s ease;
 }
 
-.nav a:hover, .nav li:hover {
+.nav a:hover{
     color: #ffaf01;
-    transform: translateY(-3px);
+}
+
+.nav li{
+    transition: transform 0.4s cubic-bezier(0, -0.5, 0, 2);
+}
+
+.nav li:hover{
+    transform: translateY(-2px)
 }
 
 /* novS 按鈕放大 */
