@@ -1,11 +1,11 @@
 <template>
   <navigate/>
-  <rainBackground/>
+  <initPage/>
 </template>
 
 <script setup>
 import navigate from './components/navigate.vue';
-import rainBackground from './components/rain.vue';
+import initPage from './components/init-page.vue'
 </script>
 
 <style scoped>

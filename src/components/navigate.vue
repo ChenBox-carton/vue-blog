@@ -8,7 +8,7 @@
             <li><a href="#">AboutMe</a></li>
             <li><a href="#">Projects</a></li>
             <li><a href="#">Images</a></li>
-            <li><a href="#">Archives</a></li>
+            <li><a href="#">Note</a></li>
         </ul>
     </div>
     <div class="navRight">
