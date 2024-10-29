@@ -19,7 +19,7 @@
             <button>
                 <img src="/images/discord.jpg" alt="discord-images" width="40px" height="40px">
             </button>
-            <button>
+            <button @click="openUrl('https://github.com/ChenBox-carton')">
                 <img src="/images/github.jpg" alt="github-images" width="40px" height="40px">
             </button>
             <button>
@@ -34,12 +34,12 @@
 </template>
 
 <script setup>
-    
+function openUrl(url) {
+    window.open(url, '_blank');
+}
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap");
-
 .container {
     font-size: 24px;
     font-family: "Agdasima", sans-serif;
@@ -138,7 +138,7 @@ ul {
 }
 
 /*RWD*/
-@media (max-width: 660px) {
+@media(max-width: 660px) {
   .nav {
         margin-left: 40px;
         gap: 30px;
@@ -186,12 +186,14 @@ ul {
 
 /* icon放大 */
 .mainIcon img,
-.loginIcon img {
+.loginIcon img,
+button img {
     transition: transform 0.4s ease;
-}   
+}
 
 .mainIcon:hover img,
-.loginIcon:hover img {
+.loginIcon:hover img,
+.navSocial button:hover img {
     transform: scale(1.2);
 }
 
@@ -230,15 +232,6 @@ ul {
 
 .nav li:hover{
     transform: translateY(-2px)
-}
-
-/* novS 按鈕放大 */
-button img {
-    transition: transform 0.4s ease;
-}
-
-.navSocial button:hover img {
-    transform: scale(1.2);
 }
 
 /* novS */
