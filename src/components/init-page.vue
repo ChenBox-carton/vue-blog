@@ -27,7 +27,7 @@ const text = "就只是一時興起，想寫的一個網站沒什麼特別的原
 .initArea img {
   margin: auto 100px;
   padding: 20px;
-  background-color: rgba(160, 160, 160);
+  background-color: rgba(160,160, 160, 0.5);
   border: 10px solid #000;
   border-radius:50px;
 }
@@ -46,7 +46,10 @@ const text = "就只是一時興起，想寫的一個網站沒什麼特別的原
 
 /* initText */
 .initText {
+  padding: 50px;
   margin: 60px 120px;
+  border-radius: 100px;
+  background-color: rgba(30, 30, 30, 0.5);
 }
 
 .initText h2 {
