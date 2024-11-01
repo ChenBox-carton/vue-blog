@@ -5,15 +5,15 @@
             <img src="/images/icon.jpg" alt="box-images" width="40px" height="40px">
         </div>
         <ul class="nav">
-            <li><a href="#">AboutMe</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Images</a></li>
-            <li><a href="#">Note</a></li>
+            <li><router-link to = "AboutMe">AboutMe</router-link></li>
+            <li><router-link to = "Projects">Projects</router-link></li>
+            <li><router-link to = "Image">Images</router-link></li>
+            <li><router-link to = "Note">Note</router-link></li>
         </ul>
     </div>
     <div class="navRight">
         <div class="navSocial">
-            <button>
+            <button @click="goToHome">
                 <img src="/images/home.jpg" alt="home-images" width="40px" height="40px">
             </button>
             <button>
@@ -34,6 +34,14 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const goToHome = () => {
+    router.push('/');
+}
+
 function openUrl(url) {
     window.open(url, '_blank');
 }
