@@ -24,7 +24,7 @@ const text = "就只是一時興起，想寫的一個網站沒什麼特別的原
 }
 
 .initArea h1 {
-  margin: auto;
+  margin: 242.5px auto;
   font-size: 50px;
 }
 

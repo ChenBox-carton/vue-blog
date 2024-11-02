@@ -7,8 +7,8 @@
         <ul class="nav">
             <li><router-link to = "AboutMe">AboutMe</router-link></li>
             <li><router-link to = "Projects">Projects</router-link></li>
-            <li><router-link to = "Image">Images</router-link></li>
             <li><router-link to = "Note">Note</router-link></li>
+            <li><router-link to = "Chat">Chat</router-link></li>
         </ul>
     </div>
     <div class="navRight">
