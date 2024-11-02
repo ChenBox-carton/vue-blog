@@ -3,7 +3,7 @@
   <RainEffect/>
   <div class="initArea">
     <img src="/images/box.jpg" alt="box-image" width="360px" height="360px">
-    <h1>Hello! <br> Wellcome to #CCC.</h1>
+    <h1></h1>
   </div>
   <div class="initText">
     <h2>About the Web:</h2>
@@ -24,12 +24,99 @@ const text = "就只是一時興起，想寫的一個網站沒什麼特別的原
 }
 
 .initArea h1 {
-  margin: 205px auto;
+  margin: auto;
   font-size: 50px;
 }
 
+.initArea h1::after {
+  content: "";
+  animation: typing 4s linear 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes typing {
+  0% {
+    content: "H";
+  }
+  4% {
+    content: "He";
+  }
+  8% {
+    content: "Hel";
+  }
+  12% {
+    content: "Hell";
+  }
+  16% {
+    content: "Hello";
+  }
+  20% {
+    content: "Hello!";
+  }
+  24% {
+    content: "Hello! ";
+  }
+  28% {
+    content: "Hello! W";
+  }
+  32% {
+    content: "Hello! We";
+  }
+  36% {
+    content: "Hello! Wel";
+  }
+  40% {
+    content: "Hello! Welk";
+  }
+  44% {
+    content: "Hello! Welk";
+  }
+  48% {
+    content: "Hello! Well";
+  }
+  52% {
+    content: "Hello! Wellc";
+  }
+  56% {
+    content: "Hello! Wellco";
+  }
+  60% {
+    content: "Hello! Wellcom";
+  }
+  64% {
+    content: "Hello! Wellcome ";
+  }
+  68% {
+    content: "Hello! Wellcome t";
+  }
+  72% {
+    content: "Hello! Wellcome tt";
+  }
+  76% {
+    content: "Hello! Wellcome tt";
+  }
+  80% {
+    content: "Hello! Wellcome to ";
+  }
+  84% {
+    content: "Hello! Wellcome to #";
+  }
+  88% {
+    content: "Hello! Wellcome to #";
+  }
+  92% {
+    content: "Hello! Wellcome to #C";
+  }
+  96% {
+    content: "Hello! Wellcome to #CC";
+  }
+  100% {
+    content: "Hello! Wellcome to #CCC";
+  }
+}
+
 .initArea img {
-  margin: auto 100px;
+  margin: 100px;
   padding: 20px;
   background-color: rgba(160,160, 160, 0.5);
   border: 10px solid #000;
