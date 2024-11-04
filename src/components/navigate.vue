@@ -13,7 +13,7 @@
     </div>
     <div class="navRight">
         <div class="navSocial">
-            <button @click="goToHome">
+            <button @click="navigateTo('/')">
                 <img src="/images/home.jpg" alt="home-images" width="40px" height="40px">
             </button>
             <button>
@@ -27,7 +27,9 @@
             </button>
         </div>
         <div class="loginIcon">
-            <img src="/images/login.jpg" alt="login-images" width="35px" height="35px">
+            <button @click="navigateTo('/login')">
+                <img src="/images/login.jpg" alt="login-images" width="35px" height="35px">
+            </button>
         </div>
     </div>
   </div>
@@ -38,11 +40,11 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
-const goToHome = () => {
-    router.push('/');
+const navigateTo = (path) => {
+    router.push(path);
 }
 
-function openUrl(url) {
+const openUrl = (url) => {
     window.open(url, '_blank');
 }
 </script>
@@ -109,7 +111,7 @@ ul {
     gap: 20px; 
 }
 
-.navSocial button {
+.navSocial button, .loginIcon button{
     display: flex;
     justify-content: center;
     align-items: center;

@@ -102,16 +102,16 @@ const text = "就只是一時興起，想寫的一個網站沒什麼特別的原
     content: "Hello! Wellcome to #";
   }
   88% {
-    content: "Hello! Wellcome to #";
-  }
-  92% {
     content: "Hello! Wellcome to #C";
   }
-  96% {
+  92% {
     content: "Hello! Wellcome to #CC";
   }
-  100% {
+  96% {
     content: "Hello! Wellcome to #CCC";
+  }
+  100% {
+    content: "Hello! Wellcome to #CCC.";
   }
 }
 
@@ -132,6 +132,9 @@ const text = "就只是一時興起，想寫的一個網站沒什麼特別的原
 @media(max-width: 660px) {
   .initArea h1 {
     font-size: 30px;
+  }
+  .initText {
+    margin: 30px 60px;
   }
 }
 
