@@ -1,6 +1,6 @@
 <template>
-  <Navigate/>
-  <RainEffect/>
+  <navigate/>
+  <rainEffect/>
   <div class="initArea">
     <img src="/images/box.jpg" alt="box-image" width="360px" height="360px">
     <h1></h1>
@@ -12,8 +12,8 @@
 </template>
 
 <script setup>
-import Navigate from './navigate.vue';
-import RainEffect from './rainEffect.vue';
+import navigate from './navigate.vue';
+import rainEffect from './rainEffect.vue';
 const text = "就只是一時興起，想寫的一個網站沒什麼特別的原因，未來應該會更新不少內容。";
 </script>
 
