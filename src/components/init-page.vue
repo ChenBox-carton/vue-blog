@@ -2,7 +2,7 @@
   <navigate/>
   <rainEffect/>
   <div class="initArea">
-    <img src="/images/box.jpg" alt="box-image" width="360px" height="360px">
+    <img src="/images/box.jpg" alt="box-jpg" width="360px" height="360px">
     <h1></h1>
   </div>
   <div class="initText">

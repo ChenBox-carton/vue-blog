@@ -16,7 +16,7 @@
             <button @click="navigateTo('/')">
                 <img src="/images/home.jpg" alt="home-images" width="40px" height="40px">
             </button>
-            <button>
+            <button @click="openUrl('https://discord.gg/PCV5sr8v')">
                 <img src="/images/discord.jpg" alt="discord-images" width="40px" height="40px">
             </button>
             <button @click="openUrl('https://github.com/ChenBox-carton')">

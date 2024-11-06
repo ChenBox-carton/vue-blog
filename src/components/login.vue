@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="logo">
-      <img src="/images/icon.jpg" alt="icon-image" width="60px">
+      <img src="/images/icon.jpg" alt="icon-image">
       <router-link to = "/">#CCC</router-link>
     </div>
     <form class="inputArea">
@@ -28,7 +28,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(to bottom, #252525, #505050)
+  background-image: linear-gradient(to bottom, #252525, #505050);
 }
 
 .logo {
@@ -36,22 +36,52 @@
   justify-content: center;
   align-items: center;
   position: absolute;
+  background-color: #fff;
+  border-radius: 100px;
   top: 20px;
   left: 20px;
-  gap: 20px;
+  gap: 10px;
+  overflow: hidden;
 }
 
 .logo img {
   width: 60px;
   height: 60px;
-  border-radius: 50%;
-  background-color: #fff;
   padding: 10px;
+  z-index: 3;
+}
+
+.logo a {
+  font-family: "Agdasima";
+  font-size: 30px;
+  color: #000;
+  text-decoration:none;
+  padding-right: 20px;
+  z-index: 3;
 }
 
 .inputArea {
   background-color: rgba(160,160, 160, 0.5);
   padding: 20px;
   border-radius: 30px;
+}
+
+/* 動畫 */
+.logo::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffaf01;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.8s ease;
+    z-index: 1;
+}
+
+.logo:hover::after {
+    transform: scaleX(1);
 }
 </style>

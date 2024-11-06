@@ -1,6 +1,6 @@
 <template>
 <navigate/>
-<p>This is Note Page</p>
+<p>This is Chat Page</p>
 </template>
 
 <script setup>
