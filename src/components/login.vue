@@ -10,17 +10,15 @@
         <img src="/images/login-box.jpg" alt="login-box-images">
       </div>
       <label for="userName">UserName:</label>
-      <div class="customInput">
+      <div class="customeInput">
         <input type="text" name="userName" placeholder="Your Name">
-        <img src="/images/user.jpg" alt="user-image">
       </div>
       <label for="password">Password:</label>
-      <div class="customInput">
+      <div class="customeInput">
         <input type="password" name="password" placeholder="Your Password">
-        <img src="/images/lock.jpg" alt="lock-image">
       </div>
-      <button>Login</button>
-      <div class="link">
+      <button class="login">Login</button>
+      <div class="links">
         <router-link to = "#">Forget Password?</router-link>
         <router-link to = "#">No Account?</router-link>
       </div>
@@ -71,23 +69,6 @@
   z-index: 3;
 }
 
-.inputArea {
-  width: 500px;
-  border-radius: 30px;
-  background-color: rgba(160,160, 160, 0.5);
-  box-shadow: 50px;
-  font-family: "Agdasima";
-  padding: 40px 30px;
-}
-
-.inputArea label {
-  font-size: 24px;
-  letter-spacing: 0.05rem;
-  margin-top: 20px;
-  display: block;
-  margin-top: 16px;
-}
-
 .title {
   display: flex;
   justify-content: center;
@@ -104,6 +85,79 @@
 .title img {
   width: 30px;
   height: 30px;
+}
+
+.inputArea {
+  width: 500px;
+  border-radius: 30px;
+  background-color: rgba(160,160, 160, 0.5);
+  box-shadow: 50px;
+  font-family: "Agdasima";
+  padding: 40px 30px;
+}
+
+.inputArea label {
+  font-size: 20px;
+  letter-spacing: 0.05rem;
+  margin-top: 20px;
+  display: block;
+  margin-top: 16px;
+}
+
+.inputArea .customeInput {
+  position: relative;
+}
+
+.inputArea .customeInput input {
+  color: #fff;
+  font-size: 16px;
+  width: 100%;
+  height: 30px;
+  border: 2px solid #202020;
+  border-radius: 6px;
+  background-color: #202020;
+  outline: none;
+  text-indent: 10px;
+  margin-top: 4px;
+  transition: all 0.4s ease;
+}
+
+.inputArea .login {
+  width: 100%;
+  height: 40px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "Agdasima";;
+  background-color: #202020;
+  border: 2px solid #202020;
+  border-radius: 12px;
+  margin-top: 50px;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+}
+
+.inputArea .links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.inputArea .links a {
+  color: #fff;
+  padding: 0 20px;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+  text-decoration: none;
+  text-underline-offset: 4px;
+}
+
+.inputArea .links a:hover {
+  color: #ffaf01;
+  text-decoration: underline;
 }
 
 /* 動畫 */
@@ -123,5 +177,10 @@
 
 .logo:hover::after {
     transform: scaleX(1);
+}
+
+.inputArea .login:hover, 
+.inputArea .customeInput input:focus {
+  border-color: #ffaf01;
 }
 </style>
