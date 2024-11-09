@@ -7,15 +7,17 @@
     <form class="inputArea">
       <div class="title">
         <h1>Login #CCC</h1>
-        <img src="/images/login-box.jpg" alt="login-box-images">
+        <i class='bx bx-box'></i>
       </div>
       <label for="userName">UserName:</label>
       <div class="customeInput">
         <input type="text" name="userName" placeholder="Your Name">
+        <i class='bx bxs-user'></i>
       </div>
       <label for="password">Password:</label>
       <div class="customeInput">
         <input type="password" name="password" placeholder="Your Password">
+        <i class='bx bxs-lock-alt'></i>
       </div>
       <button class="login">Login</button>
       <div class="links">
@@ -27,7 +29,7 @@
 </template>
 
 <script setup>
-
+import 'boxicons/css/boxicons.min.css';
 </script>
 
 <style scoped>
@@ -82,9 +84,8 @@
   letter-spacing: 0.1rem;
 }
 
-.title img {
-  width: 30px;
-  height: 30px;
+.title i {
+  font-size: 30px;
 }
 
 .inputArea {
@@ -108,11 +109,20 @@
   position: relative;
 }
 
+.inputArea .customeInput i {
+  color: #fff;
+  font-size: 20px;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  transform: all 4s ease;
+}
+
 .inputArea .customeInput input {
   color: #fff;
   font-size: 16px;
   width: 100%;
-  height: 30px;
+  height: 40px;
   border: 2px solid #202020;
   border-radius: 6px;
   background-color: #202020;
@@ -153,11 +163,7 @@
   letter-spacing: 0.05rem;
   text-decoration: none;
   text-underline-offset: 4px;
-}
-
-.inputArea .links a:hover {
-  color: #ffaf01;
-  text-decoration: underline;
+  transition: all 0.4s ease;
 }
 
 /* 動畫 */
@@ -179,8 +185,20 @@
     transform: scaleX(1);
 }
 
-.inputArea .login:hover, 
 .inputArea .customeInput input:focus {
   border-color: #ffaf01;
+}
+
+.inputArea .customeInput input:focus + i {
+  color: #ffaf01;
+}
+
+.inputArea .login:hover {
+  color: #ffaf01;
+}
+
+.inputArea .links a:hover {
+  color: #ffaf01;
+  text-decoration: underline;
 }
 </style>
