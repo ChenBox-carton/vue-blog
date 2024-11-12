@@ -207,7 +207,7 @@ button img {
     transform: scale(1.2);
 }
 
-/* nav白線 */
+/* nav線 */
 .nav a::after {
     content: '';
     position: absolute;
@@ -215,7 +215,7 @@ button img {
     bottom: 0;
     width: 100%;
     height: 3px;
-    background-color: #fff;
+    background-color: #ffaf01;
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.4s ease;
