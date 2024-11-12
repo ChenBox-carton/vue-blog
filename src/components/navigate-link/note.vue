@@ -3,6 +3,7 @@
 <div class="container">
     <div v-for="note in notes" :key="note.id" class="note">
       <p>{{ note.content }}</p>
+      <p>{{ note.id }}</p>
     </div>
 
     <button class="creatNote" @click="showForm = !showForm">
@@ -11,6 +12,7 @@
 
     <div v-if="showForm" class="form-overlay">
       <div class="form-container">
+        <input v-model="noteLabel" type="text" class="textLabel" placeholder="輸入你的標題...">
         <textarea v-model="newNote" placeholder="輸入你的留言..."></textarea>
         <div class="form-button">
           <button @click="addNote" class="submit">
@@ -31,11 +33,13 @@ import navigate from '../navigate.vue';
 
 const notes = ref([]);
 const showForm = ref(false);
+const noteLabel = ref('')
 const newNote = ref('');
 
 function addNote() {
   if (newNote.value.trim()) {
-    notes.value.push({ id: Date.now(), content: newNote.value });
+    notes.value.push({ id: noteLabel.value, content: newNote.value });
+    noteLabel.value = '';
     newNote.value = '';
     showForm.value = false;
   }
@@ -104,6 +108,18 @@ function addNote() {
   width: 80%;
 }
 
+.form-container input {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 15px;
+  color:#fff;
+  background-color: #606060;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 20px;
+}
+
 .form-container textarea {
   width: 100%;
   height: 160px;
@@ -113,10 +129,12 @@ function addNote() {
   border: none;
   border-radius: 10px;
   resize: none; 
-  padding: 10px
+  padding: 10px;
+  font-size: 16px;
 }
 
-.form-container textarea::placeholder {
+.form-container textarea::placeholder,
+.form-container input::placeholder {
   color: rgba(255, 255, 255, 0.6);
 }
 
