@@ -1,9 +1,13 @@
 <template>
-<navigate/>
+<navigate @switchRain = "switchRain"/>
+<rainEffect v-if="isRaining"/>
 <div class="container">
     <div v-for="note in notes" :key="note.id" class="note">
+      <div class="noteTitle">
+        <h1>{{ note.title }}</h1>
+        <h1>{{ note.date }}</h1>
+      </div>
       <p>{{ note.content }}</p>
-      <p>{{ note.id }}</p>
     </div>
 
     <button class="creatNote" @click="showForm = !showForm">
@@ -30,16 +34,24 @@
 <script setup>
 import { ref } from 'vue';
 import navigate from '../navigate.vue';
+import rainEffect from '../rainEffect.vue';
+const isRaining = ref(true);
+
+function switchRain() {
+  isRaining.value = !isRaining.value;
+}
 
 const notes = ref([]);
 const showForm = ref(false);
-const noteLabel = ref('')
+const noteLabel = ref('');
 const newNote = ref('');
+
+let noteId = 1;
 
 function addNote() {
   if (newNote.value.trim()) {
-    notes.value.push({ id: noteLabel.value, content: newNote.value });
-    noteLabel.value = '';
+    notes.value.push({id: noteId++, title: noteLabel.value, content: newNote.value, date: new Date().toLocaleDateString()});
+    noteLabel.value = ''; 
     newNote.value = '';
     showForm.value = false;
   }
@@ -53,10 +65,30 @@ function addNote() {
 }
 
 .note {
+  width: 100%;
   padding: 10px;
   background-color: #404040;
   margin-bottom: 10px;
   border-radius: 5px;
+}
+
+.noteTitle {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.note h1 {
+  font-size: 20px;
+  background-color: #202020;
+  border-radius: 5px;
+  padding: 0 10px;
+}
+
+.note p {
+  background-color: #303030;
+  border-radius: 5px;
+  padding: 0 10px;
 }
 
 .creatNote {

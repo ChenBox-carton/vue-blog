@@ -1,6 +1,6 @@
 <template>
-  <navigate/>
-  <rainEffect/>
+  <navigate @switchRain = "switchRain"/>
+  <rainEffect v-if="isRaining"/>
   <div class="initArea">
     <img src="/images/box.jpg" alt="box-jpg" width="360px" height="360px">
     <h1>Hello! Wellcome to #CCC.</h1>
@@ -12,8 +12,15 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import navigate from './navigate.vue';
 import rainEffect from './rainEffect.vue';
+const isRaining = ref(true);
+
+function switchRain() {
+  isRaining.value = !isRaining.value;
+}
+
 const text = "就只是一時興起，想寫的一個網站沒什麼特別的原因，未來應該會更新不少內容。";
 </script>
 

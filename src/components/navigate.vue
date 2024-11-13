@@ -22,8 +22,8 @@
             <button @click="openUrl('https://github.com/ChenBox-carton')">
                 <img src="/images/github.jpg" alt="github-images" width="40px" height="40px">
             </button>
-            <button>
-                <img src="/images/question.jpg" alt="question-images" width="40px" height="40px">
+            <button @click="switchRain()" class="rainSwitcher">
+                <img src="/images/cloud.jpg" alt="cloud-images" width="40px" height="40px">
             </button>
         </div>
         <div class="loginIcon">
@@ -46,6 +46,12 @@ const navigateTo = (path) => {
 
 const openUrl = (url) => {
     window.open(url, '_blank');
+}
+
+const emit = defineEmits(['switchRain']);
+
+const switchRain= () => {
+    emit('switchRain');
 }
 </script>
 
