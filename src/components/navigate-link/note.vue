@@ -6,8 +6,11 @@
       <div class="noteTitle">
         <h1>{{ note.title }}</h1>
         <h1>{{ note.date }}</h1>
+        <button @click="deleteNote(note.id)">
+          <i class='bx bx-trash'></i>
+        </button>
       </div>
-      <p>{{ note.content }}</p>
+      <p class="noteContent">{{ note.content }}</p>
     </div>
 
     <button class="creatNote" @click="showForm = !showForm">
@@ -32,6 +35,7 @@
 </template>
 
 <script setup>
+import 'boxicons/css/boxicons.min.css';
 import { ref } from 'vue';
 import navigate from '../navigate.vue';
 import rainEffect from '../rainEffect.vue';
@@ -48,7 +52,7 @@ const newNote = ref('');
 
 let noteId = 1;
 
-function addNote() {
+const addNote = () => {
   if (newNote.value.trim()) {
     notes.value.push({id: noteId++, title: noteLabel.value, content: newNote.value, date: new Date().toLocaleDateString()});
     noteLabel.value = ''; 
@@ -56,6 +60,11 @@ function addNote() {
     showForm.value = false;
   }
 }
+
+const deleteNote = (id) => {
+  notes.value = notes.value.filter(note => note.id !== id);
+}
+
 </script>
 
 <style scoped>
@@ -78,6 +87,25 @@ function addNote() {
   margin-bottom: 10px;
 }
 
+.noteTitle button {
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #202020;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.4s ease;
+}
+
+.noteTitle button:hover {
+  background-color: #606060;
+}
+
+.noteTitle button i {
+  font-size: 20px;
+}
+
 .note h1 {
   font-size: 20px;
   background-color: #202020;
@@ -90,6 +118,11 @@ function addNote() {
   border-radius: 5px;
   padding: 0 10px;
 }
+
+.note .noteContent {
+  min-height: 100px;
+}
+
 
 .creatNote {
   width: 60px;

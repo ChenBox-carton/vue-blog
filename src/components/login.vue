@@ -1,4 +1,5 @@
 <template>
+  <rainEffect/>
   <div class="container">
     <div class="logo">
       <img src="/images/icon.jpg" alt="icon-image">
@@ -30,6 +31,7 @@
 
 <script setup>
 import 'boxicons/css/boxicons.min.css';
+import rainEffect from './rainEffect.vue';
 </script>
 
 <style scoped>
@@ -39,7 +41,6 @@ import 'boxicons/css/boxicons.min.css';
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(to bottom, #252525, #505050);
 }
 
 .logo {

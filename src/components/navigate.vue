@@ -5,7 +5,7 @@
             <img src="/images/icon.jpg" alt="box-images" width="40px" height="40px">
         </div>
         <ul class="nav">
-            <li><router-link to = "AboutMe">AboutMe</router-link></li>
+            <li><router-link to = "Collection">Collection</router-link></li>
             <li><router-link to = "Projects">Projects</router-link></li>
             <li><router-link to = "Note">Note</router-link></li>
             <li><router-link to = "Chat">Chat</router-link></li>
@@ -50,7 +50,7 @@ const openUrl = (url) => {
 
 const emit = defineEmits(['switchRain']);
 
-const switchRain= () => {
+const switchRain = () => {
     emit('switchRain');
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
 <navigate/>
-<p>This is AboutMe Page</p>
+<p>Collection</p>
 </template>
 
 <script setup>
