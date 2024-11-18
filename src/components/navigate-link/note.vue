@@ -1,26 +1,31 @@
 <template>
-<navigate @switchRain = "switchRain"/>
-<rainEffect v-if="isRaining"/>
-<div class="container">
+  <navigate @switchRain="switchRain" />
+  <rainEffect v-if="isRaining" />
+  <div class="container">
     <div v-for="note in notes" :key="note.id" class="note">
       <div class="noteTitle">
-        <h1>{{ note.title }}</h1>
-        <h1>{{ note.date }}</h1>
-        <button @click="deleteNote(note.id)">
-          <i class='bx bx-trash'></i>
-        </button>
+        <h1 class="titleName">{{ note.title }}</h1>
+        <h1 class="date">{{ note.date }}</h1>
+        <div class="editNoteTool">
+          <button @click="editNote(note.id)">
+            <i class='bx bx-edit'></i>
+          </button>
+          <button @click="deleteNote(note.id)">
+            <i class='bx bx-trash'></i>
+          </button>
+        </div>
       </div>
       <p class="noteContent">{{ note.content }}</p>
     </div>
 
-    <button class="creatNote" @click="showForm = !showForm">
+    <button class="createNote" @click="showForm = !showForm">
       <i class='bx bxs-plus-square'></i>
     </button>
 
     <div v-if="showForm" class="form-overlay">
       <div class="form-container">
-        <input v-model="noteLabel" type="text" class="textLabel" placeholder="輸入你的標題...">
-        <textarea v-model="newNote" placeholder="輸入你的留言..."></textarea>
+        <input v-model="noteLabel" type="text" class="textLabel" maxlength="50" placeholder="輸入你的標題...">
+        <textarea v-model="noteContent" placeholder="輸入你的留言..."></textarea>
         <div class="form-button">
           <button @click="addNote" class="submit">
             <i class='bx bxs-right-arrow-circle'></i>
@@ -35,29 +40,57 @@
 </template>
 
 <script setup>
-import 'boxicons/css/boxicons.min.css';
 import { ref } from 'vue';
 import navigate from '../navigate.vue';
 import rainEffect from '../rainEffect.vue';
+import 'boxicons/css/boxicons.min.css';
+
 const isRaining = ref(true);
 
-function switchRain() {
+const switchRain = () => {
   isRaining.value = !isRaining.value;
 }
 
 const notes = ref([]);
 const showForm = ref(false);
 const noteLabel = ref('');
-const newNote = ref('');
+const noteContent = ref('');
 
 let noteId = 1;
 
 const addNote = () => {
-  if (newNote.value.trim()) {
-    notes.value.push({id: noteId++, title: noteLabel.value, content: newNote.value, date: new Date().toLocaleDateString()});
-    noteLabel.value = ''; 
-    newNote.value = '';
+  if (noteContent.value.trim()) {
+    if (editingNote.value) {
+      const note = notes.value.find((note) => note.id === editingNote.value.id);
+      if (note) {
+        note.title = noteLabel.value;
+        note.content = noteContent.value;
+        note.date = new Date().toLocaleDateString();
+      }
+      editingNote.value = null;
+    } else {
+      notes.value.push({ 
+        id: noteId++, 
+        title: noteLabel.value, 
+        content: noteContent.value, 
+        date: new Date().toLocaleDateString() 
+      });
+    }
+    noteLabel.value = '';
+    noteContent.value = '';
     showForm.value = false;
+  }
+}
+
+const editingNote = ref(null);
+
+const editNote = (id) => {
+  const note = notes.value.find((note) => note.id === id);
+  if (note) {
+    editingNote.value = { ...note };
+    showForm.value = true;
+    noteLabel.value = editingNote.value.title;
+    noteContent.value = editingNote.value.content;
   }
 }
 
@@ -68,7 +101,6 @@ const deleteNote = (id) => {
 </script>
 
 <style scoped>
-
 .container {
   padding: 20px;
 }
@@ -84,10 +116,16 @@ const deleteNote = (id) => {
 .noteTitle {
   display: flex;
   justify-content: space-between;
+  position:relative;
   margin-bottom: 10px;
 }
 
-.noteTitle button {
+.editNoteTool {
+  display: flex;
+  gap: 10px;
+}
+
+.editNoteTool button {
   width: 60px;
   display: flex;
   justify-content: center;
@@ -98,11 +136,11 @@ const deleteNote = (id) => {
   transition: background-color 0.4s ease;
 }
 
-.noteTitle button:hover {
+.editNoteTool button:hover {
   background-color: #606060;
 }
 
-.noteTitle button i {
+.editNoteTool button i {
   font-size: 20px;
 }
 
@@ -119,15 +157,10 @@ const deleteNote = (id) => {
   padding: 0 10px;
 }
 
-.note .noteContent {
-  min-height: 100px;
-}
-
-
-.creatNote {
+.createNote {
   width: 60px;
   height: 60px;
-  position: absolute;
+  position: fixed;
   bottom: 30px;
   right: 30px;
   background-color: rgb(255, 255, 255);
@@ -139,17 +172,17 @@ const deleteNote = (id) => {
   align-items: center;
 }
 
-.creatNote i {
+.createNote i {
   font-size: 40px;
   color: #000;
   transition: all 0.4s ease;
 }
 
-.creatNote:hover {
+.createNote:hover {
   background-color: #ffaf01;
 }
 
-.creatNote i:hover {
+.createNote i:hover {
   transform: scale(1.2);
 }
 
@@ -177,7 +210,7 @@ const deleteNote = (id) => {
   width: 100%;
   height: 40px;
   margin-bottom: 15px;
-  color:#fff;
+  color: #fff;
   background-color: #606060;
   border: none;
   border-radius: 10px;
@@ -189,11 +222,11 @@ const deleteNote = (id) => {
   width: 100%;
   height: 160px;
   margin-bottom: 10px;
-  color:#fff;
+  color: #fff;
   background-color: #606060;
   border: none;
   border-radius: 10px;
-  resize: none; 
+  resize: none;
   padding: 10px;
   font-size: 16px;
 }
@@ -203,7 +236,7 @@ const deleteNote = (id) => {
   color: rgba(255, 255, 255, 0.6);
 }
 
-.form-container .form-button{
+.form-container .form-button {
   display: flex;
   gap: 10px;
 }
@@ -231,8 +264,18 @@ const deleteNote = (id) => {
 }
 
 .form-container button:hover {
-  color:#ffaf01;
+  color: #ffaf01;
   border-color: #ffaf01;
 }
 
+.titleName 
+.date {
+  flex: 0 0 auto;
+}
+
+.date {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%)
+}
 </style>

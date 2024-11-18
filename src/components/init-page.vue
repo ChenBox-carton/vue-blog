@@ -1,6 +1,6 @@
 <template>
-  <navigate @switchRain = "switchRain"/>
-  <rainEffect v-if="isRaining"/>
+  <navigate @switchRain="switchRain" />
+  <rainEffect v-if="isRaining" />
   <div class="initArea">
     <img src="/images/box.jpg" alt="box-jpg" width="360px" height="360px">
     <h1>Hello! Wellcome to #CCC.</h1>
@@ -38,9 +38,9 @@ const text = "就只是一時興起，想寫的一個網站沒什麼特別的原
 .initArea img {
   margin: 100px;
   padding: 20px;
-  background-color: rgba(160,160, 160, 0.5);
+  background-color: rgba(160, 160, 160, 0.5);
   border: 10px solid #000;
-  border-radius:50px;
+  border-radius: 50px;
 }
 
 @media(max-width: 1000px) {
@@ -53,6 +53,7 @@ const text = "就只是一時興起，想寫的一個網站沒什麼特別的原
   .initArea h1 {
     font-size: 30px;
   }
+
   .initText {
     margin: 30px 60px;
   }
