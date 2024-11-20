@@ -1,12 +1,12 @@
 <template>
-  <navigate @switchRain="switchRain" />
-  <rainEffect v-if="isRaining" />
+  <navigate />
+  <rainEffect />
   <div class="container">
     <div v-for="note in notes" :key="note.id" class="note">
-      <div class="noteTitle">
+      <div class="noteContainer">
         <h1 class="titleName">{{ note.title }}</h1>
-        <h1 class="date">{{ note.date }}</h1>
-        <div class="editNoteTool">
+        <h1 class="noteDate">{{ note.date }}</h1>
+        <div class="noteTool">
           <button @click="editNote(note.id)">
             <i class='bx bx-edit'></i>
           </button>
@@ -22,34 +22,31 @@
       <i class='bx bxs-plus-square'></i>
     </button>
 
-    <div v-if="showForm" class="form-overlay">
-      <div class="form-container">
-        <input v-model="noteLabel" type="text" class="textLabel" maxlength="50" placeholder="輸入你的標題...">
-        <textarea v-model="noteContent" placeholder="輸入你的留言..."></textarea>
-        <div class="form-button">
-          <button @click="addNote" class="submit">
-            <i class='bx bxs-right-arrow-circle'></i>
-          </button>
-          <button @click="showForm = !showForm" class="abandon">
-            <i class='bx bxs-x-circle'></i>
-          </button>
+    <transition name="fade">
+      <div v-if="showForm" class="form-overlay">
+        <div class="form-container">
+          <input v-model="noteLabel" type="text" class="textLabel" maxlength="50" placeholder="輸入你的標題...">
+          <textarea v-model="noteContent" placeholder="輸入你的留言..."></textarea>
+          <div class="form-button">
+            <button @click="addNote" class="submit">
+              <i class='bx bxs-right-arrow-circle'></i>
+            </button>
+            <button @click="showForm = !showForm" class="abandon">
+              <i class='bx bxs-x-circle'></i>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </transition>
+
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
-import navigate from '../navigate.vue';
+import navigate from './navigate.vue';
 import rainEffect from '../rainEffect.vue';
 import 'boxicons/css/boxicons.min.css';
-
-const isRaining = ref(true);
-
-const switchRain = () => {
-  isRaining.value = !isRaining.value;
-}
 
 const notes = ref([]);
 const showForm = ref(false);
@@ -113,19 +110,19 @@ const deleteNote = (id) => {
   border-radius: 5px;
 }
 
-.noteTitle {
+.noteContainer {
   display: flex;
   justify-content: space-between;
   position:relative;
   margin-bottom: 10px;
 }
 
-.editNoteTool {
+.noteTool {
   display: flex;
   gap: 10px;
 }
 
-.editNoteTool button {
+.noteTool button {
   width: 60px;
   display: flex;
   justify-content: center;
@@ -136,11 +133,11 @@ const deleteNote = (id) => {
   transition: background-color 0.4s ease;
 }
 
-.editNoteTool button:hover {
+.noteTool button:hover {
   background-color: #606060;
 }
 
-.editNoteTool button i {
+.noteTool button i {
   font-size: 20px;
 }
 
@@ -269,13 +266,25 @@ const deleteNote = (id) => {
 }
 
 .titleName 
-.date {
+.noteDate {
   flex: 0 0 auto;
 }
 
-.date {
+.noteDate {
   position: absolute;
   left: 50%;
   transform: translateX(-50%)
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.4s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-to, .fade-leave-from {
+  opacity: 1;
 }
 </style>

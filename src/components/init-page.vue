@@ -1,8 +1,8 @@
 <template>
-  <navigate @switchRain="switchRain" />
-  <rainEffect v-if="isRaining" />
-  <div class="initArea">
-    <img src="/images/box.jpg" alt="box-jpg" width="360px" height="360px">
+  <navigate />
+  <rainEffect />
+  <div class="initPage">
+    <img src="/images/box.jpg" alt="box-image" width="360px" height="360px">
     <h1>Hello! Wellcome to #CCC.</h1>
   </div>
   <div class="initText">
@@ -13,29 +13,23 @@
 
 <script setup>
 import { ref } from 'vue';
-import navigate from './navigate.vue';
+import navigate from './navigate/navigate.vue';
 import rainEffect from './rainEffect.vue';
-const isRaining = ref(true);
 
-function switchRain() {
-  isRaining.value = !isRaining.value;
-}
-
-const text = "就只是一時興起，想寫的一個網站沒什麼特別的原因，未來應該會更新不少內容。";
+const text = ref("就只是一時興起，想寫的一個網站沒什麼特別的原因，未來應該會更新不少內容。");
 </script>
 
 <style scoped>
-/* initArea */
-.initArea {
+.initPage {
   display: flex;
 }
 
-.initArea h1 {
+.initPage h1 {
   margin: 242.5px auto;
   font-size: 50px;
 }
 
-.initArea img {
+.initPage img {
   margin: 100px;
   padding: 20px;
   background-color: rgba(160, 160, 160, 0.5);
@@ -44,13 +38,13 @@ const text = "就只是一時興起，想寫的一個網站沒什麼特別的原
 }
 
 @media(max-width: 1000px) {
-  .initArea img {
+  .initPage img {
     display: none;
   }
 }
 
 @media(max-width: 660px) {
-  .initArea h1 {
+  .initPage h1 {
     font-size: 30px;
   }
 

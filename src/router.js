@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import InitPage from './components/init-page.vue'
 import Login from './components/login.vue'
-import Collection from './components/navigate-link/collection.vue'
-import Projects from './components/navigate-link/projects.vue'
-import Note from './components/navigate-link/note.vue'
-import Chat from './components/navigate-link/chat.vue'
+import Collection from './components/navigate/collection.vue'
+import Projects from './components/navigate/projects.vue'
+import Note from './components/navigate/note.vue'
+import Chat from './components/navigate/chat.vue'
 
 
 const router = createRouter({

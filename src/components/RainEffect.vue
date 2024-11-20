@@ -1,16 +1,21 @@
 <template>
-  <div class="rain-container">
+  <div class="rain-container" v-if="isRaining">
     <canvas ref="canvas" class="rain-canvas"></canvas>
   </div>
+  <button class="rainSwitch" @click="switchRain">
+    <i class='bx bxs-cloud-rain rain' v-if="isRaining"></i>
+    <i class='bx bxs-cloud cloud' v-else></i>
+  </button>
 </template>
 
 <script setup>
-import { onMounted, onBeforeUnmount, ref } from 'vue';
+import { onMounted, onBeforeUnmount, ref, nextTick } from 'vue';
 
 const canvas = ref(null);
 let context = null;
 let rainDrops = [];
 let animationFrameId;
+const isRaining = ref(true);
 
 // RainDrop Class
 class RainDrop {
@@ -59,23 +64,59 @@ function animateRain(width, height) {
   animationFrameId = requestAnimationFrame(() => animateRain(width, height));
 }
 
-onMounted(() => {
+function stopRain() {
+  cancelAnimationFrame(animationFrameId); // 停止動畫
+  if (context) {
+    context.clearRect(0, 0, canvas.value.width, canvas.value.height); // 清除畫布
+  }
+}
+
+function initializeCanvas() {
   const canvasElement = canvas.value;
   context = canvasElement.getContext('2d');
+  canvasElement.width = window.innerWidth;
+  canvasElement.height = window.innerHeight;
+  createRainDrops(100, canvasElement.width, canvasElement.height);
+  animateRain(canvasElement.width, canvasElement.height);
+}
 
+const switchRain = () => {
+  isRaining.value = !isRaining.value;
+  
+  // 當切換為下雨時，重新初始化畫布並開始動畫
+  if (isRaining.value) {
+    nextTick(() => {
+      // 讓 Vue 完全渲染完畢後初始化畫布
+      initializeCanvas();
+    });
+  } else {
+    // 停止動畫並清除畫布
+    stopRain();
+  }
+};
+
+// 初始化邏輯
+onMounted(() => {
   const resizeCanvas = () => {
-    canvasElement.width = window.innerWidth;
-    canvasElement.height = window.innerHeight;
-    createRainDrops(100, canvasElement.width, canvasElement.height);
+    const canvasElement = canvas.value;
+    if (canvasElement) {
+      canvasElement.width = window.innerWidth;
+      canvasElement.height = window.innerHeight;
+      if (isRaining.value) {
+        createRainDrops(100, canvasElement.width, canvasElement.height);
+      }
+    }
   };
 
-  resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
-  animateRain(canvasElement.width, canvasElement.height);
+
+  if (isRaining.value) {
+    initializeCanvas();
+  }
 
   onBeforeUnmount(() => {
     window.removeEventListener('resize', resizeCanvas);
-    cancelAnimationFrame(animationFrameId);
+    stopRain();
   });
 });
 </script>
@@ -95,5 +136,38 @@ onMounted(() => {
   display: block;
   width: 100%;
   height: 100%;
+}
+
+.rainSwitch {
+  width: 50px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #202020;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  transition: all 0.4s ease;
+}
+
+.rainSwitch:hover {
+  color: #ffaf01;
+  .rain, .cloud {
+    animation: flashing 1s infinite alternate;
+  }
+}
+
+@keyframes flashing {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
 }
 </style>

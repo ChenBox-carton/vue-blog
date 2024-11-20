@@ -5,22 +5,22 @@
       <img src="/images/icon.jpg" alt="icon-image">
       <router-link to = "/">#CCC</router-link>
     </div>
-    <form class="inputArea">
+    <form class="inputForm">
       <div class="title">
         <h1>Login #CCC</h1>
         <i class='bx bx-box'></i>
       </div>
       <label for="userName">UserName:</label>
-      <div class="customeInput">
+      <div class="inputStyle">
         <input type="text" name="userName" placeholder="Your Name">
         <i class='bx bxs-user'></i>
       </div>
       <label for="password">Password:</label>
-      <div class="customeInput">
+      <div class="inputStyle">
         <input type="password" name="password" placeholder="Your Password">
         <i class='bx bxs-lock-alt'></i>
       </div>
-      <button class="login">Login</button>
+      <button class="Submit">Login</button>
       <div class="links">
         <router-link to = "#">Forget Password?</router-link>
         <router-link to = "#">No Account?</router-link>
@@ -89,7 +89,7 @@ import rainEffect from './rainEffect.vue';
   font-size: 30px;
 }
 
-.inputArea {
+.inputForm {
   width: 500px;
   border-radius: 30px;
   background-color: rgba(160,160, 160, 0.5);
@@ -98,7 +98,7 @@ import rainEffect from './rainEffect.vue';
   padding: 40px 30px;
 }
 
-.inputArea label {
+.inputForm label {
   font-size: 20px;
   letter-spacing: 0.05rem;
   margin-top: 20px;
@@ -106,11 +106,11 @@ import rainEffect from './rainEffect.vue';
   margin-top: 16px;
 }
 
-.inputArea .customeInput {
+.inputForm .inputStyle {
   position: relative;
 }
 
-.inputArea .customeInput i {
+.inputForm .inputStyle i {
   color: #fff;
   font-size: 20px;
   position: absolute;
@@ -119,7 +119,7 @@ import rainEffect from './rainEffect.vue';
   transform: all 4s ease;
 }
 
-.inputArea .customeInput input {
+.inputForm .inputStyle input {
   color: #fff;
   font-size: 16px;
   width: 100%;
@@ -133,7 +133,7 @@ import rainEffect from './rainEffect.vue';
   transition: all 0.4s ease;
 }
 
-.inputArea .login {
+.inputForm .Submit {
   width: 100%;
   height: 40px;
   color: #fff;
@@ -150,13 +150,13 @@ import rainEffect from './rainEffect.vue';
   transition: all 0.4s ease;
 }
 
-.inputArea .links {
+.inputForm .links {
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
 }
 
-.inputArea .links a {
+.inputForm .links a {
   color: #fff;
   padding: 0 20px;
   font-weight: 600;
@@ -186,19 +186,19 @@ import rainEffect from './rainEffect.vue';
     transform: scaleX(1);
 }
 
-.inputArea .customeInput input:focus {
+.inputForm .inputStyle input:focus {
   border-color: #ffaf01;
 }
 
-.inputArea .customeInput input:focus + i {
+.inputForm .inputStyle input:focus + i {
   color: #ffaf01;
 }
 
-.inputArea .login:hover {
+.inputForm .Submit:hover {
   color: #ffaf01;
 }
 
-.inputArea .links a:hover {
+.inputForm .links a:hover {
   color: #ffaf01;
   text-decoration: underline;
 }

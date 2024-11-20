@@ -1,10 +1,10 @@
 <template>
 <navigate/>
-<p>This is Chat Page</p>
+<p>Collection</p>
 </template>
 
 <script setup>
-import navigate from '../navigate.vue';
+import navigate from './navigate.vue';
 </script>
 
 <style scoped>
