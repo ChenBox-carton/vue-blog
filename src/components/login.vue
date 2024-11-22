@@ -1,10 +1,10 @@
 <template>
-  <rainEffect/>
+<rainEffect/>
   <div class="container">
-    <div class="logo">
+    <router-link to="/" class="logo">
       <img src="/images/icon.jpg" alt="icon-image">
-      <router-link to = "/">#CCC</router-link>
-    </div>
+      <span>#CCC</span>
+    </router-link>
     <form class="inputForm">
       <div class="title">
         <h1>Login #CCC</h1>
@@ -54,6 +54,7 @@ import rainEffect from './rainEffect.vue';
   left: 20px;
   gap: 10px;
   overflow: hidden;
+  text-decoration: none;
 }
 
 .logo img {
@@ -63,11 +64,10 @@ import rainEffect from './rainEffect.vue';
   z-index: 3;
 }
 
-.logo a {
+.logo span {
   font-family: "Agdasima";
   font-size: 30px;
   color: #000;
-  text-decoration:none;
   padding-right: 20px;
   z-index: 3;
 }

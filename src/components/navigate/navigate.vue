@@ -2,7 +2,9 @@
   <div class="container">
     <div class="navLeft">
         <div class="mainIcon">
-            <img src="/images/icon.jpg" alt="box-images" width="40px" height="40px">
+            <button @click="navigateTo('/login')">
+                <img src="/images/icon.jpg" alt="box-images" width="40px" height="40px">
+            </button>    
         </div>
         <ul class="nav">
             <li><router-link to = "Collection">Collection</router-link></li>
@@ -112,7 +114,9 @@ ul {
     gap: 20px; 
 }
 
-.navSocial button, .loginIcon button{
+.mainIcon button,
+.navSocial button, 
+.loginIcon button{
     display: flex;
     justify-content: center;
     align-items: center;
