@@ -2,7 +2,7 @@
 <rainEffect/>
   <div class="container">
     <router-link to="/" class="logo">
-      <img src="/images/icon.jpg" alt="icon-image">
+      <img src="/icon-images/icon.jpg" alt="icon-image">
       <span>#CCC</span>
     </router-link>
     <form class="inputForm">

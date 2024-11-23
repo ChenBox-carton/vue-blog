@@ -1,9 +1,9 @@
 <template>
-  <div class="container">
+  <div class="navContainer">
     <div class="navLeft">
         <div class="mainIcon">
             <button @click="navigateTo('/login')">
-                <img src="/images/icon.jpg" alt="box-images" width="40px" height="40px">
+                <img src="/icon-images/icon.jpg" alt="box-images" width="40px" height="40px">
             </button>    
         </div>
         <ul class="nav">
@@ -16,21 +16,21 @@
     <div class="navRight">
         <div class="navSocial">
             <button @click="navigateTo('/')">
-                <img src="/images/home.jpg" alt="home-images" width="40px" height="40px">
+                <img src="/icon-images/home.jpg" alt="home-images" width="40px" height="40px">
             </button>
             <button @click="openUrl('https://discord.gg/PCV5sr8v')">
-                <img src="/images/discord.jpg" alt="discord-images" width="40px" height="40px">
+                <img src="/icon-images/discord.jpg" alt="discord-images" width="40px" height="40px">
             </button>
             <button @click="openUrl('https://github.com/ChenBox-carton')">
-                <img src="/images/github.jpg" alt="github-images" width="40px" height="40px">
+                <img src="/icon-images/github.jpg" alt="github-images" width="40px" height="40px">
             </button>
             <button @click="switchRain()">
-                <img src="/images/etc.jpg" alt="etc-images" width="40px" height="40px">
+                <img src="/icon-images/etc.jpg" alt="etc-images" width="40px" height="40px">
             </button>
         </div>
         <div class="loginIcon">
             <button @click="navigateTo('/login')">
-                <img src="/images/login.jpg" alt="login-images" width="35px" height="35px">
+                <img src="/icon-images/login.jpg" alt="login-images" width="35px" height="35px">
             </button>
         </div>
     </div>
@@ -53,7 +53,7 @@ const openUrl = (url) => {
 </script>
 
 <style scoped>
-.container {
+.navContainer {
     font-size: 24px;
     font-family: "Agdasima", sans-serif;
     width: 100%;
@@ -63,6 +63,10 @@ const openUrl = (url) => {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .mainIcon {

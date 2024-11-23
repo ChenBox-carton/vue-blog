@@ -2,7 +2,7 @@
   <navigate />
   <rainEffect />
   <div class="initPage">
-    <img src="/images/box.jpg" alt="box-image" width="360px" height="360px">
+    <img src="/icon-images/box.jpg" alt="box-image" width="360px" height="360px">
     <h1>Hello! Wellcome to #CCC.</h1>
   </div>
   <div class="initText">
@@ -22,6 +22,7 @@ const text = ref("就只是一時興起，想寫的一個網站沒什麼特別�
 <style scoped>
 .initPage {
   display: flex;
+  padding-top: 100px;
 }
 
 .initPage h1 {

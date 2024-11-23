@@ -1,45 +1,44 @@
 <template>
-<navigate />
-<rainEffect />
-<div class="container">
-  <div v-for="note in notes" :key="note.id" class="note">
-    <div class="noteContainer">
-      <h1 class="titleName">{{ note.title }}</h1>
-      <h1 class="noteDate">{{ note.date }}</h1>
-      <div class="noteTool">
-        <button @click="editNote(note.id)">
-          <i class='bx bx-edit'></i>
-        </button>
-        <button @click="deleteNote(note.id)">
-          <i class='bx bx-trash'></i>
-        </button>
-      </div>
-    </div>
-    <p class="noteContent">{{ note.content }}</p>
-  </div>
-
-  <button class="createNote" @click="showForm = !showForm">
-    <i class='bx bxs-plus-square'></i>
-  </button>
-
-  <transition name="fade">
-    <div v-if="showForm" class="form-overlay">
-      <div class="form-container">
-        <input v-model="noteLabel" type="text" class="textLabel" maxlength="50" placeholder="輸入你的標題...">
-        <textarea v-model="noteContent" placeholder="輸入你的留言..."></textarea>
-        <div class="form-button">
-          <button @click="addNote" class="submit">
-            <i class='bx bxs-right-arrow-circle'></i>
+  <navigate />
+  <rainEffect />
+  <div class="noteBody">
+    <div v-for="note in notes" :key="note.id" class="note">
+      <div class="noteContainer">
+        <h1 class="titleName">{{ note.title }}</h1>
+        <h1 class="noteDate">{{ note.date }}</h1>
+        <div class="noteTool">
+          <button @click="editNote(note.id)">
+            <i class='bx bx-edit'></i>
           </button>
-          <button @click="showForm = !showForm" class="abandon">
-            <i class='bx bxs-x-circle'></i>
+          <button @click="deleteNote(note.id)">
+            <i class='bx bx-trash'></i>
           </button>
         </div>
       </div>
+      <p class="noteContent">{{ note.content }}</p>
     </div>
-  </transition>
-  
-</div>
+
+    <button class="createNote" @click="showForm = !showForm">
+      <i class='bx bxs-plus-square'></i>
+    </button>
+
+    <transition name="fade">
+      <div v-if="showForm" class="form-overlay">
+        <div class="form-container">
+          <input v-model="noteLabel" type="text" class="textLabel" maxlength="50" placeholder="輸入你的標題...">
+          <textarea v-model="noteContent" placeholder="輸入你的留言..."></textarea>
+          <div class="form-button">
+            <button @click="addNote" class="submit">
+              <i class='bx bxs-right-arrow-circle'></i>
+            </button>
+            <button @click="showForm = !showForm" class="abandon">
+              <i class='bx bxs-x-circle'></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </transition>
+  </div>
 </template>
 
 <script setup>
@@ -98,15 +97,16 @@ const deleteNote = (id) => {
 </script>
 
 <style scoped>
-.container {
-  padding: 20px;
+.noteBody {
+  padding-top: 120px;
+  margin: 0 20px;
 }
 
 .note {
   width: 100%;
   padding: 10px;
   background-color: rgba(60, 60, 60, 0.8);
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   border: 2px solid rgba(200, 200, 200, 0.8);
   border-radius: 5px;
 }
