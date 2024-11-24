@@ -93,6 +93,7 @@ const openUrl = (url) => {
     justify-content: center;
     align-items: center;
     gap: 80px;
+    transition: all 0.4s ease;
 }
 
 ul {
