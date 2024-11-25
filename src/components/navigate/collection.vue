@@ -5,25 +5,40 @@
     <div class="imageCollection">
       <div class="imageSlider">
         <div class="sliderItem">
-          <img src="/collection-images/monogatari.jpg" alt="monogatari-image">
-          <!-- <img src="/collection-images/shin-megami-tensei-iii.jpg" alt="SMT-III-image"> -->
-          <img src="/collection-images/witch-spring.jpg" alt="witch-spring-image">
+          <img 
+            :src="images[sliderIndex - 1]" 
+            :class="{ active: isActive }"
+            alt="slider-images">
         </div>
         <div class="sliderControls">
-          <span class="slider-left prev"><</span>
-          <span class="slider-right next">></span>
+          <span class="slider-left prev" @click="changeSlider(-1)">
+            <i class='bx bxs-left-arrow'></i>
+          </span>
+          <span class="slider-right next" @click="changeSlider(1)">
+            <i class='bx bxs-right-arrow'></i>
+          </span>
         </div>
 
         <div class="sliderIndicators">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span
+            v-for="(image, index) in images"
+            :key="index"
+            :class="{ active: sliderIndex === index + 1 }"
+            :style="{ 
+              width: sliderIndex === index + 1 ? '20px' : '10px',
+              background: sliderIndex === index + 1 ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.3)'
+            }"
+            @click="moveTo(index + 1)"
+          ></span>
         </div>
 
         <div class="sliderText">
-          <h3>Monogatari</h3>
-          <h3>Witch Spring</h3>
-          <h3>Shin Megami Tensei III</h3>
+          <h3 
+            v-for="(title, index) in titles" 
+            :key="index" 
+            :class="{ active: sliderIndex === index + 1 }">
+            {{ title }}
+          </h3>
         </div>
 
       </div>
@@ -32,8 +47,52 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue';
 import navigate from './navigate.vue';
 import rainEffect from '../rainEffect.vue';
+import 'boxicons/css/boxicons.min.css';
+
+const images = [
+  '/collection-images/biisu-biisu.jpg',
+  '/collection-images/monogatari.jpg',
+  '/collection-images/witch-spring.jpg',
+];
+
+const titles = [
+  'Yotsugi Ononoki',
+  'Monogatari',  
+  'Witch Spring',
+];
+
+let sliderIndex = ref(1);
+let isActive = ref(true);
+
+const changeSlider = (direction) => {
+
+  isActive.value = !isActive.value;
+
+  setTimeout(() => {
+    sliderIndex.value += direction;
+    if (sliderIndex.value < 1) sliderIndex.value = images.length;
+    if (sliderIndex.value > images.length) sliderIndex.value = 1; 
+  }, 400)
+
+  setTimeout(() => {
+    isActive.value = !isActive.value;
+  }, 600)
+};
+
+const moveTo = (index) => {
+  isActive.value = !isActive;
+  
+  setTimeout(() => {
+    sliderIndex.value = index;
+  }, 400)
+
+  setTimeout(() => {
+    isActive.value = !isActive.value;
+  }, 600)
+};
 </script>
 
 <style scoped>
@@ -43,23 +102,28 @@ import rainEffect from '../rainEffect.vue';
 
 .imageCollection {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .imageSlider {
   position: relative;
-  width: 800px;
-  height: 450px;
+  width: 1000px;
+  height: 500px;
   border-radius: 20px;
   overflow: hidden;
-  transition: all 0.4s ease;
 }
 
 .imageSlider img {
   width: 100%;
   height: 100%;
-  position: absolute;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.imageSlider img.active {
+  opacity: 1;
 }
 
 .sliderControls span{
@@ -69,13 +133,18 @@ import rainEffect from '../rainEffect.vue';
   height: 70px;
   top: 50%;
   transform: translateY(-50%);
-  font-family: "Agdasima";
   text-align: center;
   line-height: 70px;
-  font-size: 50px;
   color: #404040;
   background: rgba(255, 255, 255, 0.3);
   transition: all 0.4s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sliderControls span i {
+  font-size: 20px;
 }
 
 .sliderControls span:hover {
@@ -104,15 +173,35 @@ import rainEffect from '../rainEffect.vue';
 .sliderIndicators span {
   cursor: pointer;
   margin: 0 5px;
-  width: 30px;
+  width: 10px;
   height: 10px;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 5px;
   transition: all 0.4s ease;
 }
 
 .sliderIndicators span:hover {
-  background: rgba(255, 255, 255, 0.8); 
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.sliderText {
+  width: 100%;
+  height: min-content;
+  display: flex;
+  justify-content: center;
+}
+
+.sliderText h3 {
+  position: absolute;
+  bottom: 60px;
+  font-size: 24px;
+  letter-spacing: 2px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.sliderText h3.active {
+  opacity: 1;
 }
 
 @media (max-width: 850px){
