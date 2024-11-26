@@ -167,6 +167,14 @@ import rainEffect from './rainEffect.vue';
   transition: all 0.4s ease;
 }
 
+/* RWD */
+@media (max-width: 600px) {
+  .inputForm {
+  margin-top: 50px;
+  width: 350px;
+};
+}
+
 /* 動畫 */
 .logo::after {
     content: '';

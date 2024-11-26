@@ -65,18 +65,24 @@ function animateRain(width, height) {
 }
 
 function stopRain() {
-  cancelAnimationFrame(animationFrameId); // 停止動畫
+  if (animationFrameId) {
+    cancelAnimationFrame(animationFrameId); // 停止動畫
+    animationFrameId = null;
+  }
   if (context) {
     context.clearRect(0, 0, canvas.value.width, canvas.value.height); // 清除畫布
   }
 }
 
 function initializeCanvas() {
+  stopRain();
+
   const canvasElement = canvas.value;
   context = canvasElement.getContext('2d');
   canvasElement.width = window.innerWidth;
   canvasElement.height = window.innerHeight;
-  createRainDrops(100, canvasElement.width, canvasElement.height);
+  
+  createRainDrops(100, canvasElement.width, canvasElement.height)
   animateRain(canvasElement.width, canvasElement.height);
 }
 
@@ -95,19 +101,28 @@ const switchRain = () => {
   }
 };
 
+const resizeCanvas = () => {
+  const canvasElement = canvas.value;
+  if (canvasElement) {
+    // 停止動畫
+    stopRain();
+
+    // 調整視窗大小
+    canvasElement.width = window.innerWidth;
+    canvasElement.height = window.innerHeight;
+    
+    //生成雨
+    if (isRaining.value) {
+        createRainDrops(100, canvasElement.width, canvasElement.height);
+        animateRain(canvasElement.width, canvasElement.height);
+    }
+  }
+}
+
 // 初始化邏輯
 onMounted(() => {
-  const resizeCanvas = () => {
-    const canvasElement = canvas.value;
-    if (canvasElement) {
-      canvasElement.width = window.innerWidth;
-      canvasElement.height = window.innerHeight;
-      if (isRaining.value) {
-        createRainDrops(100, canvasElement.width, canvasElement.height);
-      }
-    }
-  };
-
+  
+  // 初始化時綁定事件監聽器
   window.addEventListener('resize', resizeCanvas);
 
   if (isRaining.value) {

@@ -206,8 +206,8 @@ const moveTo = (index) => {
 
 @media (max-width: 850px){
   .imageSlider {
-    width: 400px;
-    height: 225px;
+    width: 500px;
+    height: 250px;
   }
 }
 </style>
