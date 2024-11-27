@@ -131,15 +131,12 @@ const deleteNote = (id) => {
   background-color: #202020;
   border: none;
   border-radius: 5px;
+  font-size: 20px;
   transition: background-color 0.4s ease;
 }
 
 .noteTool button:hover {
   background-color: #606060;
-}
-
-.noteTool button i {
-  font-size: 20px;
 }
 
 .note h1 {
@@ -250,11 +247,11 @@ const deleteNote = (id) => {
 }
 
 .form-container .submit {
-  width: 90%;
+  width: 75%;
 }
 
 .form-container .abandon {
-  width: 10%;
+  width: 25%;
 }
 
 .form-container button i {
@@ -301,8 +298,9 @@ const deleteNote = (id) => {
     background: rgba(0, 0, 0, 0);
     font-size: 10px;
     position: absolute;
-    top: 25%;
-    left: 40%;
+    top: 15px;
+    transform: translateY(-50%);
+    left: 30%;
   }
 }
 </style>

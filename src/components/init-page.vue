@@ -24,11 +24,6 @@ const text = ref("");
   padding-top: 100px;
 }
 
-.initPage h1 {
-  margin: 242.5px auto;
-  font-size: 50px;
-}
-
 .initPage img {
   margin: 100px;
   padding: 20px;
@@ -37,7 +32,11 @@ const text = ref("");
   border-radius: 50px;
 }
 
-/* initText */
+.initPage h1 {
+  margin: 242.5px auto;
+  font-size: 50px;
+}
+
 .initText {
   padding: 50px;
   margin: 60px 120px;

@@ -40,6 +40,9 @@
         </div>
     </div>
   </div>
+  <div class="miniNavContent">
+
+  </div>
 </template>
 
 <script setup>
@@ -75,6 +78,18 @@ const openUrl = (url) => {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.navLeft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navRight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .mainIcon {
     width: 60px;
     height: 60px;
@@ -89,8 +104,21 @@ const openUrl = (url) => {
 
 .mainIcon img,
 .loginIcon img, 
-.navSocial button img{
+.navSocial button img {
     z-index: 3;
+}
+
+.mainIcon button,
+.navSocial button, 
+.loginIcon button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    outline: none;
 }
 
 .nav { 
@@ -100,14 +128,11 @@ const openUrl = (url) => {
     align-items: center;
     gap: 80px;
     transition: all 0.4s ease;
-}
-
-ul {
     list-style-type: none;
     z-index: 3;
 }
 
-.nav a {
+.nav li a {
     color: #fff;
     text-decoration: none; 
     position: relative;
@@ -119,6 +144,20 @@ ul {
     align-items: center;
     position: fixed;
     right: 20px;
+    z-index: 3;
+    transition: all 0.4s ease; 
+}
+
+.miniNavContent {
+    /* opacity: 0; */
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    width: 300px;
+    height: 300px;
+    background: #404040;
+    border-radius: 25px;
+    z-index: 2;
 }
 
 .miniNav button {
@@ -131,15 +170,8 @@ ul {
     border-radius: 25%;
     background-color: #404040;
     cursor: pointer;
-    transition: background-color 0.4s ease;
-}
-
-.miniNav button:hover {
-    background-color: #606060;
-}
-
-.miniNav button i {
     font-size: 30px;
+    transition: background-color 0.4s ease;
 }
 
 .navSocial {
@@ -154,19 +186,6 @@ ul {
     gap: 20px; 
 }
 
-.mainIcon button,
-.navSocial button, 
-.loginIcon button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    background-color: transparent;
-    cursor: pointer;
-    border: none;
-    outline: none;
-}
-
 .loginIcon {
     width: 60px;
     height: 60px;
@@ -178,18 +197,6 @@ ul {
     position: relative;
     overflow: hidden;
     cursor: pointer;
-}
-
-.navLeft {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.navRight {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 /*RWD*/
@@ -233,7 +240,7 @@ ul {
     }
 }
 
-/* ----------動畫---------- */
+/* 動畫 */
 
 /* 填充icon背景*/
 .mainIcon::after, 
@@ -323,6 +330,11 @@ button img {
 .navSocial button:hover::before {
     opacity: 1;
     transform: scale(1);
+}
+
+/* miniNav */
+.miniNav button:hover {
+    background-color: #606060;
 }
 
 </style>

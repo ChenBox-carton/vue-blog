@@ -1,7 +1,6 @@
 <template>
   <navigate/>
   <rainEffect/>
-  <div class="collectionBody">
     <div class="imageCollection">
       <div class="imageSlider">
         <div class="sliderItem">
@@ -40,14 +39,12 @@
             {{ title }}
           </h3>
         </div>
-
       </div>
     </div>
-  </div>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import navigate from './navigate.vue';
 import rainEffect from '../rainEffect.vue';
 import 'boxicons/css/boxicons.min.css';
@@ -75,9 +72,6 @@ const changeSlider = (direction) => {
     sliderIndex.value += direction;
     if (sliderIndex.value < 1) sliderIndex.value = images.length;
     if (sliderIndex.value > images.length) sliderIndex.value = 1;
-  }, 300)
-
-  setTimeout(() => {
     isActive.value = true;
   }, 400)
 }
@@ -87,20 +81,14 @@ const moveTo = (index) => {
   
   setTimeout(() => {
     sliderIndex.value = index;
-  }, 300)
-
-  setTimeout(() => {
     isActive.value = true;
   }, 400)
 }
 </script>
 
 <style scoped>
-.collectionBody {
-  padding-top: 150px;
-}
-
 .imageCollection {
+  padding-top: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,11 +96,12 @@ const moveTo = (index) => {
 
 .imageSlider {
   position: relative;
+  z-index: 1;
   width: 1000px;
   height: 500px;
   border-radius: 20px;
   overflow: hidden;
-  transition: width 0.4s ease, height 0.4s ease;;
+  transition: width 0.4s ease, height 0.4s ease;
 }
 
 .imageSlider img {
@@ -120,7 +109,7 @@ const moveTo = (index) => {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 0.4s ease, transform 0.4s ease;;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .imageSlider img.active {
@@ -135,6 +124,7 @@ const moveTo = (index) => {
   height: 70px;
   top: 50%;
   transform: translateY(-50%);
+  font-size: 20px;
   text-align: center;
   line-height: 70px;
   color: #404040;
@@ -143,10 +133,6 @@ const moveTo = (index) => {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.sliderControls span i {
-  font-size: 20px;
 }
 
 .sliderControls span:hover {
@@ -212,6 +198,7 @@ const moveTo = (index) => {
 
 
 /* RWD */
+
 @media (max-width: 800px) {
   .imageSlider {
     width: 600px;
