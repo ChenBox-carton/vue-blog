@@ -274,7 +274,8 @@ const deleteNote = (id) => {
 .noteDate {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%)
+  transform: translateX(-50%);
+  transition: all 0.4s ease;
 }
 
 .fade-enter-active, .fade-leave-active {
@@ -287,5 +288,21 @@ const deleteNote = (id) => {
 
 .fade-enter-to, .fade-leave-from {
   opacity: 1;
+}
+
+/* RWD */
+@media (max-width: 750px) {
+  .createNote {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .note .noteDate {
+    background: rgba(0, 0, 0, 0);
+    font-size: 10px;
+    position: absolute;
+    top: 25%;
+    left: 40%;
+  }
 }
 </style>

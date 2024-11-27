@@ -96,6 +96,7 @@ import rainEffect from './rainEffect.vue';
   box-shadow: 50px;
   font-family: "Agdasima";
   padding: 40px 30px;
+  transition: width 0.4s ease;
 }
 
 .inputForm label {
@@ -168,11 +169,17 @@ import rainEffect from './rainEffect.vue';
 }
 
 /* RWD */
-@media (max-width: 600px) {
+@media (max-width: 450px) {
   .inputForm {
   margin-top: 50px;
   width: 350px;
 };
+}
+
+@media (max-width: 800px) {
+  .inputForm {
+    margin-top: 50px;
+  }
 }
 
 /* 動畫 */

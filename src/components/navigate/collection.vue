@@ -69,30 +69,30 @@ let isActive = ref(true);
 
 const changeSlider = (direction) => {
 
-  isActive.value = !isActive.value;
+  isActive.value = false;
 
   setTimeout(() => {
     sliderIndex.value += direction;
     if (sliderIndex.value < 1) sliderIndex.value = images.length;
-    if (sliderIndex.value > images.length) sliderIndex.value = 1; 
-  }, 400)
+    if (sliderIndex.value > images.length) sliderIndex.value = 1;
+  }, 300)
 
   setTimeout(() => {
-    isActive.value = !isActive.value;
-  }, 600)
-};
+    isActive.value = true;
+  }, 400)
+}
 
 const moveTo = (index) => {
-  isActive.value = !isActive;
+  isActive.value = false;
   
   setTimeout(() => {
     sliderIndex.value = index;
-  }, 400)
+  }, 300)
 
   setTimeout(() => {
-    isActive.value = !isActive.value;
-  }, 600)
-};
+    isActive.value = true;
+  }, 400)
+}
 </script>
 
 <style scoped>
@@ -112,6 +112,7 @@ const moveTo = (index) => {
   height: 500px;
   border-radius: 20px;
   overflow: hidden;
+  transition: width 0.4s ease, height 0.4s ease;;
 }
 
 .imageSlider img {
@@ -119,11 +120,12 @@ const moveTo = (index) => {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease;;
 }
 
 .imageSlider img.active {
   opacity: 1;
+  transform: scale(1);
 }
 
 .sliderControls span{
@@ -196,6 +198,10 @@ const moveTo = (index) => {
   bottom: 60px;
   font-size: 24px;
   letter-spacing: 2px;
+  text-transform: uppercase;
+  background: rgba(50, 50, 50, 0.5);
+  padding: 0 10px;
+  border-radius: 10px;
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -204,10 +210,32 @@ const moveTo = (index) => {
   opacity: 1;
 }
 
-@media (max-width: 850px){
+
+/* RWD */
+@media (max-width: 800px) {
   .imageSlider {
-    width: 500px;
-    height: 250px;
+    width: 600px;
+    height: 300px;
+  }
+
+  .sliderIndicators {
+    bottom: 10px;
+  }
+ 
+  .sliderText h3 {
+    bottom: 30px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    padding: 0 8px;
+    border-radius: 5px;
+  }
+}
+
+@media (max-width: 450px) {
+
+  .imageSlider {
+    width: 400px;
+    height: 200px;
   }
 }
 </style>

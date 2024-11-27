@@ -7,11 +7,16 @@
             </button>    
         </div>
         <ul class="nav">
-            <li><router-link to = "Collection">Collection</router-link></li>
-            <li><router-link to = "Projects">Projects</router-link></li>
-            <li><router-link to = "Note">Note</router-link></li>
-            <li><router-link to = "Chat">Chat</router-link></li>
+            <li><router-link to = "/collection">Collection</router-link></li>
+            <li><router-link to = "/projects">Projects</router-link></li>
+            <li><router-link to = "/note">Note</router-link></li>
+            <li><router-link to = "/chat">Chat</router-link></li>
         </ul>
+        <div class="miniNav">
+            <button>
+                <i class='bx bx-menu'></i>
+            </button>
+        </div>
     </div>
     <div class="navRight">
         <div class="navSocial">
@@ -39,6 +44,7 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
+import 'boxicons/css/boxicons.min.css';
 
 const router = useRouter();
 
@@ -107,6 +113,35 @@ ul {
     position: relative;
 }
 
+.miniNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 20px;
+}
+
+.miniNav button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 25%;
+    background-color: #404040;
+    cursor: pointer;
+    transition: background-color 0.4s ease;
+}
+
+.miniNav button:hover {
+    background-color: #606060;
+}
+
+.miniNav button i {
+    font-size: 30px;
+}
+
 .navSocial {
     display: flex;
     justify-content: center;
@@ -158,11 +193,18 @@ ul {
 }
 
 /*RWD*/
-@media(max-width: 660px) {
-  .nav {
-        margin-left: 40px;
-        gap: 30px;
-  }
+@media(max-width: 600px) {
+   .nav {
+        margin-left: 20px;
+        gap: 20px;
+    }
+   .nav a {
+        font-size: 20px;
+    }
+    .mainIcon {
+        display: none;
+    }
+
 }
 
 @media(max-width: 1080px) {
@@ -171,12 +213,22 @@ ul {
         visibility: hidden;
         transition: opacity 0.5s ease, visibility 0.5s ease;
     }
+    .miniNav {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
 }
 
 @media(min-width: 1081px) {
     .navSocial, .loginIcon {
         opacity: 1;
         visibility: visible;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    .miniNav {
+        opacity: 0;
+        visibility: hidden;
         transition: opacity 0.5s ease, visibility 0.5s ease;
     }
 }

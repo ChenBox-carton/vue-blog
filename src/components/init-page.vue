@@ -6,7 +6,6 @@
     <h1>Hello! Wellcome to #CCC.</h1>
   </div>
   <div class="initText">
-    <h2>About the Web:</h2>
     <p>{{ text }}</p>
   </div>
 </template>
@@ -16,7 +15,7 @@ import { ref } from 'vue';
 import navigate from './navigate/navigate.vue';
 import rainEffect from './rainEffect.vue';
 
-const text = ref("就只是一時興起，想寫的一個網站沒什麼特別的原因，未來應該會更新不少內容。");
+const text = ref("");
 </script>
 
 <style scoped>
@@ -38,22 +37,6 @@ const text = ref("就只是一時興起，想寫的一個網站沒什麼特別�
   border-radius: 50px;
 }
 
-@media(max-width: 1000px) {
-  .initPage img {
-    display: none;
-  }
-}
-
-@media(max-width: 660px) {
-  .initPage h1 {
-    font-size: 30px;
-  }
-
-  .initText {
-    margin: 30px 60px;
-  }
-}
-
 /* initText */
 .initText {
   padding: 50px;
@@ -69,5 +52,23 @@ const text = ref("就只是一時興起，想寫的一個網站沒什麼特別�
 .initText p {
   font-family: "Noto Sans TC", sans-serif;
   font-size: 20px;
+}
+
+/* RWD */
+
+@media(max-width: 1000px) {
+  .initPage img {
+    display: none;
+  }
+}
+
+@media(max-width: 450px) {
+  .initPage h1 {
+    font-size: 30px;
+  }
+
+  .initText {
+    margin: 30px 60px;
+  }
 }
 </style>
