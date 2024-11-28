@@ -1,6 +1,6 @@
 <template>
   <navigate/>
-  <rainEffect/>
+  <rain/>
     <div class="imageCollection">
       <div class="imageSlider">
         <div class="sliderItem">
@@ -46,7 +46,7 @@
 <script setup>
 import { ref } from 'vue';
 import navigate from './navigate.vue';
-import rainEffect from '../rainEffect.vue';
+import rain from '../rain-effect.vue';
 import 'boxicons/css/boxicons.min.css';
 
 const images = [

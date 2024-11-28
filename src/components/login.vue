@@ -1,5 +1,5 @@
 <template>
-<rainEffect/>
+<rain/>
   <div class="container">
     <router-link to="/" class="logo">
       <img src="/icon-images/icon.jpg" alt="icon-image">
@@ -31,7 +31,7 @@
 
 <script setup>
 import 'boxicons/css/boxicons.min.css';
-import rainEffect from './rainEffect.vue';
+import rain from './rain-effect.vue';
 </script>
 
 <style scoped>

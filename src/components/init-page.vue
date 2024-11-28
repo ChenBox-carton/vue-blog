@@ -1,6 +1,6 @@
 <template>
   <navigate />
-  <rainEffect />
+  <rain />
   <div class="initPage">
     <img src="/icon-images/box.jpg" alt="box-image" width="360px" height="360px">
     <h1>Hello! Wellcome to #CCC.</h1>
@@ -13,7 +13,7 @@
 <script setup>
 import { ref } from 'vue';
 import navigate from './navigate/navigate.vue';
-import rainEffect from './rainEffect.vue';
+import rain from './rain-effect.vue';
 
 const text = ref("");
 </script>

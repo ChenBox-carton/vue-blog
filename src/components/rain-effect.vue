@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import { onMounted, onBeforeUnmount, ref, nextTick } from 'vue';
+import { ref, nextTick, onMounted } from 'vue';
 
 const canvas = ref(null);
 let context = null;
@@ -17,7 +17,7 @@ let rainDrops = [];
 let animationFrameId;
 const isRaining = ref(true);
 
-// RainDrop Class
+// 動畫物件繪製
 class RainDrop {
   constructor(x, y, speed, length) {
     this.x = x;
@@ -64,6 +64,7 @@ function animateRain(width, height) {
   animationFrameId = requestAnimationFrame(() => animateRain(width, height));
 }
 
+// 停止動畫
 function stopRain() {
   if (animationFrameId) {
     cancelAnimationFrame(animationFrameId); // 停止動畫
@@ -74,9 +75,12 @@ function stopRain() {
   }
 }
 
+// 初始化
 function initializeCanvas() {
-  stopRain();
+ 
+  stopRain(); // 停止
 
+  // 繪製
   const canvasElement = canvas.value;
   context = canvasElement.getContext('2d');
   canvasElement.width = window.innerWidth;
@@ -89,19 +93,21 @@ function initializeCanvas() {
 const switchRain = () => {
   isRaining.value = !isRaining.value;
   
-  // 當切換為下雨時，重新初始化畫布並開始動畫
+  // 切換為下雨
   if (isRaining.value) {
     nextTick(() => {
-      // 讓 Vue 完全渲染完畢後初始化畫布
+      // 完全渲染完畢後初始化畫布
       initializeCanvas();
     });
+  // 切換為無雨
   } else {
-    // 停止動畫並清除畫布
     stopRain();
   }
 };
 
+// 當螢幕大小變動時
 const resizeCanvas = () => {
+
   const canvasElement = canvas.value;
   if (canvasElement) {
     // 停止動畫
@@ -119,20 +125,13 @@ const resizeCanvas = () => {
   }
 }
 
-// 初始化邏輯
 onMounted(() => {
   
   // 初始化時綁定事件監聽器
   window.addEventListener('resize', resizeCanvas);
 
-  if (isRaining.value) {
-    initializeCanvas();
-  }
+  initializeCanvas();
 
-  onBeforeUnmount(() => {
-    window.removeEventListener('resize', resizeCanvas);
-    stopRain();
-  });
 });
 </script>
 
@@ -151,6 +150,7 @@ onMounted(() => {
   display: block;
   width: 100%;
   height: 100%;
+  z-index: -1;
 }
 
 .rainSwitch {
