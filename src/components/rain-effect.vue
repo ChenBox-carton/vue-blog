@@ -86,7 +86,7 @@ function initializeCanvas() {
   canvasElement.width = window.innerWidth;
   canvasElement.height = window.innerHeight;
   
-  createRainDrops(100, canvasElement.width, canvasElement.height)
+  createRainDrops(50, canvasElement.width, canvasElement.height)
   animateRain(canvasElement.width, canvasElement.height);
 }
 
