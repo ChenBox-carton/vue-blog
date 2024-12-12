@@ -1,16 +1,15 @@
 <template>
   <div class="navigation-container">
     <ul class="navigation-link">
-      <li><router-link to="/collection">圖庫</router-link></li>
-      <li><router-link to="/note">紀錄</router-link></li>
-      <li><router-link to="/chat">聊天</router-link></li>
-      <li><router-link to="/projects">專案</router-link></li>
+      <li><router-link to="/gallery">圖庫</router-link></li>
+      <li><router-link to="/">紀錄</router-link></li>
       <li><router-link to="/test">測試</router-link></li>
     </ul>
     <img class="navigation-icon" src="../assets/images/icon.jpg" alt="images" width="48px" height="48px">
     <ul class="navigation-link-outside">
-      <button @click="openUrl()"><i class='bx bxl-discord-alt'></i></button>
-      <button @click="openUrl()"><i class='bx bxl-github'></i></button>
+      <button @click="openNav('/')"><i class='bx bx-home'></i></button>
+      <button @click="openUrl('https://discord.gg/uNjBDNYRFX')"><i class='bx bxl-discord-alt'></i></button>
+      <button @click="openUrl('https://github.com/chaohangz/vueBlog')"><i class='bx bxl-github'></i></button>
       <button @click="openNav()"><i class='bx bx-link'></i></button>
       <button @click="openNav('login')"><i class='bx bxs-log-in'></i></button>
     </ul>
@@ -22,7 +21,7 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
-const openUrl = () => {
+const openUrl = (url) => {
   window.open(url, '_blank');
 }
 

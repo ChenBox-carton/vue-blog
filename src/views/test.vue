@@ -1,29 +1,29 @@
 <template>
   <Nav/>
-  <div>
+  <div class="test-container">
     <h1>Test Page</h1>
-    <p>這是測試頁面。</p>
+    <Card :cards="data1"/>
   </div>
-  <Card :cards="data"/>
 </template>
 
 <script setup>
 import Nav from '../components/navigation-bar.vue';
 import Card from '../components/card.vue';
-const data = [{
+
+const data1 = [{
   id: 1,
   title: "測試一",
-  content: "無",
+  content: "無"
 },
 {
   id: 2,
   title: "測試二",
-  content: "無",
+  content: "無"
 },
 {
   id: 3,
   title: "測試三",
-  content: "無",
+  content: "無"
 }]
 </script>
 
