@@ -1,27 +1,31 @@
 <template>
   <div class="slider-container">
-    <img
-      :src="images[index].src"
-      :class="{ active: isActive }"
-      alt="slider-images"
-    >
-    <div class="slider-controllers">
-      <span class="slider-left prev" @click="moveSlider(-1)">
-        <i class='bx bxs-left-arrow'></i>
-      </span>
-      <span class="slider-right next" @click="moveSlider(1)">
-        <i class='bx bxs-right-arrow'></i>
-      </span>
+    <div class="slider-item">
+      <img 
+        :src="images[index].src" 
+        :class="{ active: isActive }"
+        alt="slider-image">
+      <h2 
+        :class="{ active: isActive }"
+        class="slider-title">
+        {{ images[index].title }}</h2>
+      <div class="slider-controllers">
+        <span class="slider-left prev" @click="moveSlider(-1)">
+          <i class='bx bxs-left-arrow'></i>
+        </span>
+        <span class="slider-right next" @click="moveSlider(1)">
+          <i class='bx bxs-right-arrow'></i>
+        </span>
+      </div>
+      <div class="slider-indicators">
+        <span 
+          v-for="(image, indicatorsIndex) in images"
+          :key="indicatorsIndex"
+          :class="{ active: indicatorsIndex === index}"
+          @click="jumpToSlider(indicatorsIndex)">
+        </span>
+      </div>
     </div>
-    <div class="slider-indicators">
-      <span 
-      v-for="(image, indicatorsIndex) in images"
-      :key="indicatorsIndex"
-      :class="{ active: indicatorsIndex === index}"
-      @click="jumpToSlider(indicatorsIndex)">
-    </span>
-    </div>
-    <h2>{{ images[index].title }}</h2>
   </div>
 </template>
 
@@ -36,14 +40,22 @@ const props = defineProps ({
 })
 
 let index = ref(0);
-let isActive = ref(true);
+let isActive = ref(false);
 
 const moveSlider = (direction) => {
-  index.value = (index.value + direction + props.images.length) % props.images.length;
+  isActive.value = true;
+  setTimeout(() => {
+    index.value = (index.value + direction + props.images.length) % props.images.length;
+    isActive.value = false;
+  }, 400); 
 }
 
 const jumpToSlider = (sliderIndex) => {
-  index.value = sliderIndex;
+  isActive.value = true;
+  setTimeout(() => {
+    index.value = sliderIndex;
+    isActive.value = false;
+  }, 400);
 }
 </script>
 
@@ -52,21 +64,26 @@ const jumpToSlider = (sliderIndex) => {
   display: flex;
   align-items: center;
   width: 800px;
+  height: 480px;
   overflow: hidden;
+}
+
+.slider-item {
+  width: 100%;
   position: relative;
-  border: 4px solid rgba(200, 200, 200, 0.5);
-  border-radius: 32px;
 }
 
 .slider-container img {
   width: 100%;
+  border-radius: 32px;
   object-fit: contain;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.4s ease;
 }
 
+/* 過度效果 */
 .slider-container img.active {
-  opacity: 1;
+  opacity: 0;
 }
 
 .slider-container h2 {
@@ -75,6 +92,12 @@ const jumpToSlider = (sliderIndex) => {
   left: 50%;
   bottom: 32px;
   transform: translateX(-50%);
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.slider-container h2.active {
+  opacity: 0;
 }
 
 .slider-controllers span{
