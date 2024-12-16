@@ -6,10 +6,12 @@
       <h1>Hello! Wellcome to #CCC.</h1>
     </div>
   </div>
+  <Fot/>
 </template>
 
 <script setup>
 import Nav from '../components/navigation-bar.vue';
+import Fot from '../components/fotter.vue'
 </script>
 
 <style scoped>
@@ -22,7 +24,7 @@ import Nav from '../components/navigation-bar.vue';
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 136px;
+  margin-top: 120px;
 }
 
 .main-label img {

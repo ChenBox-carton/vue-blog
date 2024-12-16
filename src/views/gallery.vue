@@ -28,6 +28,5 @@ const images = [{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 80px;
 }
 </style>

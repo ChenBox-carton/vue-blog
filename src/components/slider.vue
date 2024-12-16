@@ -3,10 +3,10 @@
     <div class="slider-item">
       <img 
         :src="images[index].src" 
-        :class="{ active: isActive }"
+        :class="{ active: onChange }"
         alt="slider-image">
       <h2 
-        :class="{ active: isActive }"
+        :class="{ active: onChange }"
         class="slider-title">
         {{ images[index].title }}</h2>
       <div class="slider-controllers">
@@ -40,21 +40,21 @@ const props = defineProps ({
 })
 
 let index = ref(0);
-let isActive = ref(false);
+let onChange = ref(false);
 
 const moveSlider = (direction) => {
-  isActive.value = true;
+  onChange.value = true;
   setTimeout(() => {
     index.value = (index.value + direction + props.images.length) % props.images.length;
-    isActive.value = false;
+    onChange.value = false;
   }, 400); 
 }
 
 const jumpToSlider = (sliderIndex) => {
-  isActive.value = true;
+  onChange.value = true;
   setTimeout(() => {
     index.value = sliderIndex;
-    isActive.value = false;
+    onChange.value = false;
   }, 400);
 }
 </script>
@@ -81,7 +81,6 @@ const jumpToSlider = (sliderIndex) => {
   transition: opacity 0.4s ease;
 }
 
-/* 過度效果 */
 .slider-container img.active {
   opacity: 0;
 }

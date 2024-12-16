@@ -121,7 +121,7 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   position: fixed;
-  left: 10px;
+  left: 5px;
   bottom: 10px;
   background-color: #202020;
   border: none;
