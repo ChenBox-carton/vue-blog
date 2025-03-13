@@ -1,28 +1,25 @@
 <template>
   <div class="slider-container">
     <div class="slider-item">
-      <img 
-        :src="images[index].src" 
-        :class="{ active: onChange }"
-        alt="slider-image">
-      <h2 
-        :class="{ active: onChange }"
-        class="slider-title">
-        {{ images[index].title }}</h2>
+      <img :src="images[index].src" :class="{ active: onChange }" alt="slider-image" />
+      <h2 :class="{ active: onChange }" class="slider-title">
+        {{ images[index].title }}
+      </h2>
       <div class="slider-controllers">
         <span class="slider-left prev" @click="moveSlider(-1)">
-          <i class='bx bxs-left-arrow'></i>
+          <i class="bx bxs-left-arrow"></i>
         </span>
         <span class="slider-right next" @click="moveSlider(1)">
-          <i class='bx bxs-right-arrow'></i>
+          <i class="bx bxs-right-arrow"></i>
         </span>
       </div>
       <div class="slider-indicators">
-        <span 
+        <span
           v-for="(image, indicatorsIndex) in images"
           :key="indicatorsIndex"
-          :class="{ active: indicatorsIndex === index}"
-          @click="jumpToSlider(indicatorsIndex)">
+          :class="{ active: indicatorsIndex === index }"
+          @click="jumpToSlider(indicatorsIndex)"
+        >
         </span>
       </div>
     </div>
@@ -32,12 +29,12 @@
 <script setup>
 import { ref, defineProps } from 'vue';
 
-const props = defineProps ({
+const props = defineProps({
   images: {
     type: Array,
     required: true,
   },
-})
+});
 
 let index = ref(0);
 let onChange = ref(false);
@@ -47,8 +44,8 @@ const moveSlider = (direction) => {
   setTimeout(() => {
     index.value = (index.value + direction + props.images.length) % props.images.length;
     onChange.value = false;
-  }, 400); 
-}
+  }, 400);
+};
 
 const jumpToSlider = (sliderIndex) => {
   onChange.value = true;
@@ -56,7 +53,7 @@ const jumpToSlider = (sliderIndex) => {
     index.value = sliderIndex;
     onChange.value = false;
   }, 400);
-}
+};
 </script>
 
 <style>
@@ -99,7 +96,7 @@ const jumpToSlider = (sliderIndex) => {
   opacity: 0;
 }
 
-.slider-controllers span{
+.slider-controllers span {
   width: 36px;
   height: 80px;
   cursor: pointer;

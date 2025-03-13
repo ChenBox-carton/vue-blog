@@ -5,13 +5,23 @@
       <li><router-link to="/">紀錄</router-link></li>
       <li><router-link to="/test">測試</router-link></li>
     </ul>
-    <img class="navigation-icon" src="../assets/images/icon.jpg" alt="images" width="48px" height="48px">
+    <img
+      class="navigation-icon"
+      src="../assets/images/icon.jpg"
+      alt="images"
+      width="48px"
+      height="48px"
+    />
     <ul class="navigation-link-outside">
-      <button @click="openNav('/')"><i class='bx bx-home'></i></button>
-      <button @click="openUrl('https://discord.gg/uNjBDNYRFX')"><i class='bx bxl-discord-alt'></i></button>
-      <button @click="openUrl('https://github.com/chaohangz/vueBlog')"><i class='bx bxl-github'></i></button>
-      <button @click="openNav()"><i class='bx bx-link'></i></button>
-      <button @click="openNav('login')"><i class='bx bxs-log-in'></i></button>
+      <button @click="openNav('/')"><i class="bx bx-home"></i></button>
+      <button @click="openUrl('https://discord.gg/uNjBDNYRFX')">
+        <i class="bx bxl-discord-alt"></i>
+      </button>
+      <button @click="openUrl('https://github.com/chaohangz/vueBlog')">
+        <i class="bx bxl-github"></i>
+      </button>
+      <button @click="openNav()"><i class="bx bx-link"></i></button>
+      <button @click="openNav('login')"><i class="bx bxs-log-in"></i></button>
     </ul>
   </div>
 </template>
@@ -23,11 +33,11 @@ const router = useRouter();
 
 const openUrl = (url) => {
   window.open(url, '_blank');
-}
+};
 
 const openNav = (path) => {
   router.push(path);
-}
+};
 </script>
 
 <style>
@@ -55,7 +65,9 @@ const openNav = (path) => {
 .navigation-link {
   left: 32px;
   gap: 16px;
-  transition: left 0.4s ease, gap 0.4s ease;
+  transition:
+    left 0.4s ease,
+    gap 0.4s ease;
 }
 
 .navigation-link-outside {
@@ -64,7 +76,9 @@ const openNav = (path) => {
   gap: 8px;
   padding: 4px;
   border-radius: 32px;
-  transition: right 0.4s ease, gap 0.4s ease;
+  transition:
+    right 0.4s ease,
+    gap 0.4s ease;
 }
 
 .navigation-icon {
@@ -84,7 +98,7 @@ const openNav = (path) => {
 }
 
 .navigation-link li a:hover {
-  color: rgba(255, 180, 0, 1)
+  color: rgba(255, 180, 0, 1);
 }
 
 /* navigation-link 底下的白線 */
@@ -99,7 +113,9 @@ const openNav = (path) => {
   background-color: rgba(200, 200, 200, 1);
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform 0.4s ease, background-color 0.1s ease;
+  transition:
+    transform 0.4s ease,
+    background-color 0.1s ease;
   z-index: 1;
 }
 
@@ -119,7 +135,9 @@ const openNav = (path) => {
   color: rgba(25, 25, 25, 1);
   background-color: rgba(200, 200, 200, 0.5);
   padding: 4px;
-  transition: color 0.4s ease, background-color 0.4s ease;   
+  transition:
+    color 0.4s ease,
+    background-color 0.4s ease;
 }
 
 .navigation-link-outside button:hover {

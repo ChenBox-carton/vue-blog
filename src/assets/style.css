@@ -7,7 +7,9 @@
 }
 
 body {
-  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family:
+    'Segoe UI', 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
   font-size: 16px;
   line-height: 1.6;
 }
@@ -44,7 +46,6 @@ select {
 button {
   cursor: pointer;
 }
-
 
 @media (prefers-color-scheme: light) {
   body {

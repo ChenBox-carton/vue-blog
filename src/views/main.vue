@@ -1,17 +1,15 @@
 <template>
-  <Nav/>
+  <Nav />
   <div class="main-container">
     <div class="main-label">
-      <img src="../assets/images/box.jpg" alt="images">
+      <img src="../assets/images/box.jpg" alt="images" />
       <h1>Hello! Wellcome to #CCC.</h1>
     </div>
   </div>
-  <Fot/>
 </template>
 
 <script setup>
 import Nav from '../components/navigation-bar.vue';
-import Fot from '../components/fotter.vue'
 </script>
 
 <style scoped>

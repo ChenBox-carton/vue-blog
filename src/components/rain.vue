@@ -2,9 +2,9 @@
   <div class="rain">
     <canvas ref="canvas" class="rain-canvas"></canvas>
   </div>
-  <button class="rain-switch" @click = "switchRain">
-    <i class='bx bxs-cloud-rain cloud-rain-icon' v-if="raining"></i>
-    <i class='bx bxs-cloud cloud-icon' v-else></i>
+  <button class="rain-switch" @click="switchRain">
+    <i class="bx bxs-cloud-rain cloud-rain-icon" v-if="raining"></i>
+    <i class="bx bxs-cloud cloud-icon" v-else></i>
   </button>
 </template>
 
@@ -18,14 +18,14 @@ let animation;
 const raining = ref(true);
 
 class RainDrop {
-  constructor (x, y, speed, length) {
+  constructor(x, y, speed, length) {
     this.x = x;
     this.y = y;
     this.speed = speed;
     this.length = length;
   }
 
-  fall (height) {
+  fall(height) {
     this.y += this.speed;
     if (this.y > height) {
       this.y = 0 - this.length;
@@ -50,20 +50,20 @@ const createRainDrops = (num, width, height) => {
     const y = Math.random() * height;
     const speed = Math.random() * 4 + 1;
     const length = Math.random() * 20 + 1;
-    rainDrops.push(new RainDrop(x, y, speed, length))
+    rainDrops.push(new RainDrop(x, y, speed, length));
   }
-}
+};
 
 const animateRain = (width, height) => {
   context.clearRect(0, 0, width, height);
-  rainDrops.forEach(drop => {
+  rainDrops.forEach((drop) => {
     drop.fall(height);
     drop.draw(context);
   });
   animation = requestAnimationFrame(() => {
     animateRain(width, height);
-  })
-}
+  });
+};
 
 const initializeCanvas = () => {
   if (!raining.value) return;
@@ -78,7 +78,7 @@ const initializeCanvas = () => {
 
   createRainDrops(50, canvasElement.width, canvasElement.height);
   animateRain(canvasElement.width, canvasElement.height);
-}
+};
 
 const switchRain = () => {
   raining.value = !raining.value;
@@ -88,12 +88,12 @@ const switchRain = () => {
     rainDrops = [];
     context.clearRect(0, 0, width, height);
   }
-}
+};
 
 onMounted(() => {
   initializeCanvas();
   window.addEventListener('resize', initializeCanvas);
-})
+});
 </script>
 
 <style scoped>
@@ -127,13 +127,15 @@ onMounted(() => {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  
+  z-index: 1;
 }
 
 .rain-switch i {
   color: #fff;
   font-size: 16px;
-  transition: color 0.4s ease, font-size 0.4s ease;
+  transition:
+    color 0.4s ease,
+    font-size 0.4s ease;
 }
 
 .rain-switch:hover {
@@ -145,4 +147,3 @@ onMounted(() => {
   }
 }
 </style>
-

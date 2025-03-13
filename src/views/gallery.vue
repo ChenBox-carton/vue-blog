@@ -1,7 +1,7 @@
 <template>
-  <Nav/>
+  <Nav />
   <div class="gallery-container">
-    <Slider :images="images"/>
+    <Slider :images="images" />
   </div>
 </template>
 
@@ -9,18 +9,20 @@
 import Nav from '../components/navigation-bar.vue';
 import Slider from '../components/slider.vue';
 import WitchSpring from '../assets/images/collection-images/witch-spring.jpg';
-import Biisu from '../assets/images/collection-images/biisu-biisu.jpg'
+import Biisu from '../assets/images/collection-images/biisu-biisu.jpg';
 
-const images = [{
-  id: 1,
-  title: "Witch-Spring",
-  src: WitchSpring
-},
-{
-  id: 2,
-  title: "Biisu-Biisu",
-  src: Biisu
-}]
+const images = [
+  {
+    id: 1,
+    title: 'Witch-Spring',
+    src: WitchSpring,
+  },
+  {
+    id: 2,
+    title: 'Biisu-Biisu',
+    src: Biisu,
+  },
+];
 </script>
 
 <style scoped>
